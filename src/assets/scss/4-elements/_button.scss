@@ -1,0 +1,44 @@
+/*=============================================
+=            Button            =
+=============================================*/
+.button {
+    width: 100%;
+    background-color: $purple--one;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    color: $white;
+    font-size: 1.1rem;
+    box-shadow: $button--box--shadow;
+
+    &.secondary-button {
+        color: $black--eight;
+        background-color: $white--two;
+    }
+
+    &.__h-50 {
+        height: 50px;
+    }
+
+    &__h-60 {
+        height: 60px;
+    }
+}
+
+.singel-button--container {
+    padding: 40px 70px;
+}
+
+.primary_button {
+    font-size: 16px;
+    line-height: 1;
+    width: 100%;
+    padding: 15px 0;
+    color: $white;
+    border: none;
+    background-color: $purple--one;
+    border-radius: $border-radius-buttons;
+}
+
+/*=====  End of Button  ======*/

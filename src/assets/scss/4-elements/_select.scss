@@ -1,0 +1,14 @@
+.select_wrapper {
+    width: 100%;
+}
+
+.select_container {
+    & #countryPreferences-dropdown-button {
+        background-color: $purple--one !important;
+        border: none;
+    }
+}
+
+.select_error {
+    color: red;
+}

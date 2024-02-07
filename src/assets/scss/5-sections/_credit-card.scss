@@ -1,0 +1,32 @@
+.credit-card {
+    padding: 14px 20px;
+    border-top: 1px solid $grey--eight;
+    border-bottom: 1px solid $grey--eight;
+
+    &__info {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+
+    &__title {
+        color: $black--eight;
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    &__password {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $grey--twentyNine;
+    }
+
+    &__text-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 5px;
+    }
+}

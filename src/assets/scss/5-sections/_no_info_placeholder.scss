@@ -1,0 +1,12 @@
+.no_info_placeholder_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+
+    .title {
+        font-size: 1.714rem;
+        font-weight: $fw-bold;
+    }
+}

@@ -1,0 +1,60 @@
+.icon {
+
+    &_white {
+        color: $white;
+        fill: $white;
+
+        svg,
+        path {
+            color: $white !important;
+            fill: $white !important;
+        }
+    }
+
+    &.active {
+        color: $purple--one;
+    }
+}
+
+.icon-size {
+
+    &-small {
+        & svg {
+            width: 1.4rem;
+            height: 1.4rem;
+        }
+    }
+
+    &-25 {
+        & svg {
+            width: 25px;
+            height: 25px;
+        }
+    }
+
+    &-30 {
+        & svg {
+            width: 30px;
+            height: 30px;
+        }
+    }
+}
+
+.icon_error {
+    color: red;
+}
+
+.icon-color {
+
+    &__white--two {
+        color: $white--two;
+    }
+
+    &__error {
+        color: $red;
+    }
+
+    &__purple_one {
+        color: $purple--one;
+    }
+}

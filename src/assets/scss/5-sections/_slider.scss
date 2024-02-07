@@ -1,0 +1,10 @@
+.scrollable-wrapper {
+    display: flex;
+    // gap: 30px;
+    overflow-x: hidden;
+    overflow-x: auto;
+
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+}

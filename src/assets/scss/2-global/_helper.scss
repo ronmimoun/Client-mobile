@@ -1,0 +1,219 @@
+/*=============================================
+=            Helper            =
+=============================================*/
+
+@for $i from 0 through 15 {
+    .row-#{1 * $i} {
+        margin-right: -1px * $i;
+        margin-left: -1px * $i;
+
+        &>[class*="col"] {
+            padding-right: 1px * $i;
+            padding-left: 1px * $i;
+        }
+    }
+}
+
+@for $i from 16 through 50 {
+    .row-#{1 * $i} {
+        margin-right: -1px * $i;
+        margin-left: -1px * $i;
+
+        // Responsive
+        @media #{$large-desktop} {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        @media #{$small-desktop} {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        @media #{$extra-large-mobile} {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        @media #{$large-mobile} {
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        &>[class*="col"] {
+            padding-right: 1px * $i;
+            padding-left: 1px * $i;
+
+            // Responsive
+            @media #{$large-desktop} {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+
+            @media #{$small-desktop} {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+
+            @media #{$extra-large-mobile} {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+
+            @media #{$large-mobile} {
+                padding-right: 15px;
+                padding-left: 15px;
+            }
+        }
+    }
+}
+
+.cursor {
+
+    &__pointer {
+        cursor: pointer;
+    }
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+
+    &>.col,
+    &>[class*="col-"] {
+        margin: 0;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+.m {
+
+    // Margin top
+    &t_1 {
+        margin-top: 1rem;
+    }
+
+    &t_2 {
+        margin-top: 2rem;
+    }
+
+    &t_3 {
+        margin-top: 3rem;
+    }
+
+    // Margin bottom
+    &b_1 {
+        margin-bottom: 1rem;
+    }
+
+    &b_2 {
+        margin-bottom: 2rem;
+    }
+
+    &b_3 {
+        margin-bottom: 3rem;
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-space {
+    justify-content: space-between;
+}
+
+.justify-around {
+    justify-content: space-around;
+}
+
+.f-dir-col {
+    flex-direction: column;
+}
+
+.f-space-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.gap {
+    &--5 {
+        gap: 5px;
+    }
+
+    &--10 {
+        gap: 10px;
+    }
+
+    &--15 {
+        gap: 15px;
+    }
+
+    &--20 {
+        gap: 20px;
+    }
+
+    &--25 {
+        gap: 25px;
+    }
+}
+
+.flex {
+    &__1 {
+        flex: 1;
+    }
+
+    &__2 {
+        flex: 2;
+    }
+
+    &__3 {
+        flex: 3;
+    }
+}
+
+.mark {
+    background: red;
+}
+
+.text-al {
+
+    &__center {
+        text-align: center;
+    }
+}
+
+.rotate {
+    &_90 {
+        rotate: 90deg;
+    }
+
+    &_180 {
+        rotate: 180deg;
+    }
+
+    &_270 {
+        rotate: 270deg;
+    }
+}
+
+.fold_text {
+    word-wrap: break-word;
+}
+
+.background {
+    &_white {
+        background-color: $white;
+    }
+}
+
+/*=====  End of Helper  ======*/

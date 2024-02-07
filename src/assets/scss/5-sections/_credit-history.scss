@@ -1,0 +1,33 @@
+.credit-history__item {
+    background-color: $white--two;
+    border-bottom: 1px solid $grey--seven;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & h6 {
+            font-weight: 600;
+        }
+
+        & p {
+            color: $grey;
+        }
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & p {
+            line-height: normal;
+            font-weight: 600;
+        }
+    }
+
+}
