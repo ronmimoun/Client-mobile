@@ -1,13 +1,13 @@
 import { createAsyncThunk, ActionReducerMapBuilder } from "@reduxjs/toolkit";
-import { UserAuthResponse } from "../../../models/auth/Login/Login.response";
 import { UserState } from "../user-state";
 import { authApiService } from "../../../services/http/api/auth.api.service";
 import { ROUTES } from "../../../constants/routes.constants";
 import { userUtilService } from "../../../utils/user.utils";
+import { UserModel } from "../../../types/user.type";
 
 export type logoutThunkResponse = {
   isSucceeded: boolean;
-  data: UserAuthResponse | null;
+  data: UserModel | null;
 };
 
 export const logoutThunk = createAsyncThunk("user/logoutThunk", async () => {

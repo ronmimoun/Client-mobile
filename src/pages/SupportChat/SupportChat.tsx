@@ -5,7 +5,6 @@ import { useCallback, useEffect, useState } from "react";
 import { userSelectors } from "../../store/user/user.selectors";
 import { useScrollToBottom } from "../../hooks/useScrollToBottom";
 import { useUpdateEffect } from "../../hooks/useEffectUpdate";
-import { UserAuthResponse } from "../../models/auth/Login/Login.response";
 import { supportChatApiService } from "../../services/http/api/supportChat.api.service";
 import { PAGES_TITLE } from "../../constants/page-title.constants";
 import { RoomChatModel } from "../../types/support-chat/roomChat.type";
@@ -21,11 +20,10 @@ import {
 import PageLayout from "../../layout/PageLayout";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader } from "../../components/ui/Preloader/Loader";
+import { UserModel } from "../../types/user.type";
 
 export const SupportChat = () => {
-  const currentUser = useSelector(
-    userSelectors.currentUser()
-  ) as UserAuthResponse;
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
   const [room, setRoom] = useState<RoomChatModel | null>(null);
   const formMethods = useForm<SupportChatForm>({
     defaultValues: {

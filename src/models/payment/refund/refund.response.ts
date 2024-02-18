@@ -1,3 +1,3 @@
-import { UserAuthResponse } from "../../auth/Login/Login.response";
+import { UserModel } from "../../../types/user.type";
 
-export type RefundContactResponse = {} & UserAuthResponse;
+export type RefundContactResponse = {} & UserModel;

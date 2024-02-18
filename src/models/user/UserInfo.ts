@@ -1,13 +1,13 @@
-import { UserAuthResponse } from "../auth/Login/Login.response"
+import { UserModel } from "../../types/user.type";
 
 export class UserInfo {
-    userId
-    imgUrl
-    fullname
+  userId;
+  imgUrl;
+  fullname;
 
-    constructor(user: UserAuthResponse) {
-        this.userId = user._id
-        this.imgUrl = user.imgUrl
-        this.fullname = user.fullname
-    }
+  constructor(user: UserModel) {
+    this.userId = user._id;
+    this.imgUrl = user.imgUrl;
+    this.fullname = user.fullname;
+  }
 }

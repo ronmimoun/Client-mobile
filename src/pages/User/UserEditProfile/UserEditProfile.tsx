@@ -12,7 +12,6 @@ import {
 import { countryApiService } from "../../../services/http/api/country.api.service";
 import PageLayout from "../../../layout/PageLayout";
 import { PAGES_TITLE } from "../../../constants/page-title.constants";
-import { UserAuthResponse } from "../../../models/auth/Login/Login.response";
 import { useAppDispatch } from "../../../store";
 import { userActions } from "../../../store/user/user.actions";
 import { GenericResponse } from "../../../utils/api.utils";
@@ -20,11 +19,10 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../../constants/popup.constants";
 import { Select } from "../../../components/ui/Select/Select";
+import { UserModel } from "../../../types/user.type";
 
 export const UserEditProfile = () => {
-  const currentUser = useSelector(
-    userSelectors.currentUser()
-  ) as UserAuthResponse;
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
   const [countries, setCountries] = useState<CountryModel[]>([]);
   const formMethods = useForm<EditProfileForm>({
     defaultValues: {
@@ -58,10 +56,10 @@ export const UserEditProfile = () => {
       ...data,
       _id: currentUser._id,
       countryPreferences: getRelevantCountry(data.countryPreferences),
-    } as unknown as UserAuthResponse;
+    } as unknown as UserModel;
     const response = (await dispatch(
       userActions.userUpdateThunk(requestPayload)
-    )) as PayloadAction<GenericResponse<UserAuthResponse>>;
+    )) as PayloadAction<GenericResponse<UserModel>>;
 
     if (!response.payload.isSucceeded || !response.payload.data) return;
     toast.success(POPUP_MESSAGE.USER.USER_UPDATE.SUCCESS);

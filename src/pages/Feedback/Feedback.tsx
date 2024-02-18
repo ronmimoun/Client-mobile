@@ -8,7 +8,6 @@ import { LoadingButton } from "../../components/ui/LoadingButton/LoadingButton";
 import { userSelectors } from "../../store/user/user.selectors";
 import { Star } from "../../components/ui/Star/Star";
 import { feedbackApiService } from "../../services/http/api/feedback.api.service";
-import { UserAuthResponse } from "../../models/auth/Login/Login.response";
 import { FeedbackModel } from "../../types/feedback/feedback.type";
 import {
   FEEDBACK_FORM_CONFIG,
@@ -17,11 +16,10 @@ import {
 import { CreateFeedbackRequest } from "../../models/feedback/create/createFeedback.request";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../constants/popup.constants";
+import { UserModel } from "../../types/user.type";
 
 export const Feedback = () => {
-  const currentUser = useSelector(
-    userSelectors.currentUser()
-  ) as UserAuthResponse;
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
   const [feedback, setFeedback] = useState<FeedbackModel | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const { id: contactId } = useParams();

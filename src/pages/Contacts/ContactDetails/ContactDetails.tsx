@@ -15,16 +15,14 @@ import { ScenariosPurchaseButton } from "./ScenariosPurchaseButton";
 import { ContactTransactionType } from "../../../enums/Contact/ContactTransactionType";
 import { ROUTES } from "../../../constants/routes.constants";
 import { feedbackApiService } from "../../../services/http/api/feedback.api.service";
-import { UserAuthResponse } from "../../../models/auth/Login/Login.response";
 import { Mailto } from "../../../components/ui/MailTo/MailTo";
 import { NoInfoPlaceholder } from "../../../components/feature/NoInfoPlaceholder/NoInfoPlaceholder";
 import PageLayout from "../../../layout/PageLayout";
 import { ContactNotFoundIcon } from "../../../components/ui/Icons";
+import { UserModel } from "../../../types/user.type";
 
 export const ContactDetails = () => {
-  const currentUser = useSelector(
-    userSelectors.currentUser()
-  ) as UserAuthResponse;
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
 
   const [contact, setContact] = useState<ContactModel | null>(null);
   const [isFavorite, setIsFavorite] = useState(false);
@@ -70,6 +68,7 @@ export const ContactDetails = () => {
       )
         ? true
         : false;
+      console.log("isOwned", isOwned);
       setIsOwned(isOwned);
     } else setIsOwned(false);
   };

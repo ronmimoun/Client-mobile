@@ -6,9 +6,10 @@ import { FavoriteIcon } from "../../../components/ui/Icons";
 import Contact from "../../../components/feature/Contacts/Contact/Contact";
 import PageLayout from "../../../layout/PageLayout";
 import { ROUTES } from "../../../constants/routes.constants";
+import { UserModel } from "../../../types/user.type";
 
 export const FavoriteContacts = () => {
-  const currentUser = useSelector(userSelectors.currentUser());
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
 
   return (
     <PageLayout title={PAGES_TITLE.FAVORITES_PAGE.TITLE_NAME}>

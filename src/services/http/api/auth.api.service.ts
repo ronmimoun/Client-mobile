@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from "axios";
 import { LoginRequest } from "../../../models/auth/Login/Login.request";
-import { UserAuthResponse } from "../../../models/auth/Login/Login.response";
+import { LoginResponse } from "../../../models/auth/Login/Login.response";
 import { ApiResponse } from "../../../models/base/api-base";
 import {
   buildGeneralApiInstanceConfig,
@@ -16,16 +16,14 @@ const authHttpInstace = createManagedAxiosInstance(
 
 const login = async (
   request?: LoginRequest
-): Promise<ApiResponse<UserAuthResponse>> => {
+): Promise<ApiResponse<LoginResponse>> => {
   const options: AxiosRequestConfig = {
     method: "post",
     url: "/auth/login",
     data: request,
   };
 
-  const response = await authHttpInstace.managedRequest<UserAuthResponse>(
-    options
-  );
+  const response = await authHttpInstace.managedRequest<LoginResponse>(options);
   return response;
 };
 const logout = async (): Promise<ApiResponse<null>> => {

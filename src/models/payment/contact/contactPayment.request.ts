@@ -3,6 +3,5 @@ import { ContactTransaction } from "../../contactTransaction/contactTransaction"
 
 export type ContactPaymentRequest = {
   transactions: ContactTransaction[];
-  userId: string;
   type: ContactTransactionType;
 };

@@ -1,5 +1,5 @@
-import { UserAuthResponse } from "../../../models/auth/Login/Login.response";
 import { ApiResponse } from "../../../models/base/api-base";
+import { UserModel } from "../../../types/user.type";
 import { getBaseURl } from "../../../utils/api.utils";
 import {
   buildGeneralApiInstanceConfig,
@@ -7,22 +7,20 @@ import {
 } from "../instances";
 import { AxiosRequestConfig } from "axios";
 
-const userHttpInstace = createManagedAxiosInstance(
+const userHttpInstance = createManagedAxiosInstance(
   buildGeneralApiInstanceConfig(getBaseURl())
 );
 
 const updateUser = async (
-  request: UserAuthResponse
-): Promise<ApiResponse<UserAuthResponse>> => {
+  request: UserModel
+): Promise<ApiResponse<UserModel>> => {
   const options: AxiosRequestConfig = {
     method: "post",
     url: "/users/update",
     data: request,
   };
 
-  const response = await userHttpInstace.managedRequest<UserAuthResponse>(
-    options
-  );
+  const response = await userHttpInstance.managedRequest<UserModel>(options);
   return response;
 };
 

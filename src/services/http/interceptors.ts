@@ -16,6 +16,7 @@ import {
   incrementLoaderCount,
 } from "../../store/global/global.reducer";
 import { toast } from "react-toastify";
+import { concatBearerToken } from "../../utils/header.utils";
 
 export function addInterceptors(instance: AxiosInstance) {
   instance.interceptors.request.use(onRequestFulfilled, onRequestRejected);
@@ -30,6 +31,7 @@ export function addInterceptors(instance: AxiosInstance) {
 
 function onRequestFulfilled(config: InternalAxiosRequestConfig<any>) {
   handleLoader(config.loaderOptions);
+  addJwtHeader(config);
 
   if (config.headers.Authorization) return config;
 
@@ -140,6 +142,17 @@ const handleError = (error: AxiosError) => {
   const errorMessageToDisplay = makeErrorMessage(error);
 
   toast.error(errorMessageToDisplay);
+};
+
+export const addJwtHeader = (config: InternalAxiosRequestConfig<any>) => {
+  if (config.headers.Authorization) return;
+
+  const jwt = store.getState().user.jwtToken;
+  if (!jwt) return;
+
+  console.log("jwt", jwt);
+
+  config.headers.Authorization = concatBearerToken(jwt);
 };
 
 const isValidErrorAlert = (

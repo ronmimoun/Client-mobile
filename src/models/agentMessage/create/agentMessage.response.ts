@@ -1,7 +1,7 @@
 import { AgentMessageModel } from "../../../types/agent-message/agentMessage.type";
-import { UserAuthResponse } from "../../auth/Login/Login.response";
+import { UserModel } from "../../../types/user.type";
 
 export type CreateAgentMessageResponse = {
   agentMessage: AgentMessageModel;
-  savedUser: UserAuthResponse;
+  savedUser: UserModel;
 };

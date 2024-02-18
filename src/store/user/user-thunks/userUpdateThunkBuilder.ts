@@ -1,15 +1,15 @@
 import { createAsyncThunk, ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import { UserState } from "../user-state";
-import { UserAuthResponse } from "../../../models/auth/Login/Login.response";
 import { buildResponse } from "../../../utils/api.utils";
 import { userUtilService } from "../../../utils/user.utils";
 import { userApiService } from "../../../services/http/api/user.api.service";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../../constants/popup.constants";
+import { UserModel } from "../../../types/user.type";
 
 export const userUpdateThunk = createAsyncThunk(
   "user/userUpdateThunk",
-  async (data: UserAuthResponse) => {
+  async (data: UserModel) => {
     const response = await userApiService.updateUser(data);
 
     if (!response.isSucceeded || !response.data?.content)

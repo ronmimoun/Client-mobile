@@ -2,15 +2,13 @@ import { useSelector } from "react-redux";
 import PageLayout from "../../../layout/PageLayout";
 import { PAGES_TITLE } from "../../../constants/page-title.constants";
 import { userSelectors } from "../../../store/user/user.selectors";
-import { UserAuthResponse } from "../../../models/auth/Login/Login.response";
 import ContactInfo from "../../../components/feature/Contacts/Contact/ContactInfo";
 import { timeUtilService } from "../../../utils/date.utils";
 import { ROUTES } from "../../../constants/routes.constants";
+import { UserModel } from "../../../types/user.type";
 
 export const AgentMessages = () => {
-  const currentUser = useSelector(
-    userSelectors.currentUser()
-  ) as UserAuthResponse;
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
 
   return (
     <PageLayout title={PAGES_TITLE.AGENT_DETAILS_PAGE.TITLE_NAME}>

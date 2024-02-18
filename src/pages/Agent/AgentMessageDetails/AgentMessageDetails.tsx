@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { categoryManagerSelectors } from "../../../store/categoryManager/categoryManager.selectors";
 import { userSelectors } from "../../../store/user/user.selectors";
-import { UserAuthResponse } from "../../../models/auth/Login/Login.response";
 import { AgentMessageModel } from "../../../types/agent-message/agentMessage.type";
 import {
   AGENT_MESSAGE_DETAILS_FORM_CONFIG,
@@ -24,14 +23,13 @@ import { useAppDispatch } from "../../../store";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { GenericResponse } from "../../../utils/api.utils";
 import { CreateAgentMessageResponse } from "../../../models/agentMessage/create/agentMessage.response";
+import { UserModel } from "../../../types/user.type";
 
 const AgentMessageDetails = () => {
   const { categories, jobTitles } = useSelector(
     categoryManagerSelectors.categoryManager()
   );
-  const currentUser = useSelector(
-    userSelectors.currentUser()
-  ) as UserAuthResponse;
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [agentMessage, setAgentMessage] = useState<AgentMessageModel | null>(

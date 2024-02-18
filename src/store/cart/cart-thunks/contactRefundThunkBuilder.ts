@@ -7,7 +7,6 @@ import { POPUP_MESSAGE } from "../../../constants/popup.constants";
 
 type ContactRefundThunkProps = {
   transactionId: string;
-  userId: string;
 };
 
 export const contactRefundThunk = createAsyncThunk(

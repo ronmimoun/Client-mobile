@@ -1,20 +1,21 @@
 import { createSlice, PayloadAction, Reducer } from "@reduxjs/toolkit";
 import { UserState } from "./user-state";
-import { UserAuthResponse } from "../../models/auth/Login/Login.response";
 import { userUtilService } from "../../utils/user.utils";
 import { userThunkActionBuilder } from "./user.thunk-builder";
 import { CountryModel } from "../../types/country/CountryModel";
+import { UserModel } from "../../types/user.type";
 
 const initialState: UserState = {
   currentUser: userUtilService.getLoggedinUser() || null,
   countryPreference: userUtilService.getLocalUserCountryPreference() || null,
+  jwtToken: userUtilService.getUserJwtToken() || null,
 };
 
 export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setCurrentUser: (state, action: PayloadAction<UserAuthResponse>) => {
+    setCurrentUser: (state, action: PayloadAction<UserModel>) => {
       userUtilService.saveLocalUser(action.payload);
       state.currentUser = action.payload;
     },

@@ -1,9 +1,12 @@
-import { STORAGE_KEY_LOGGEDIN_USER } from "../constants/storage.constatns";
+import {
+  STORAGE_KEY_JWT_TOKEN,
+  STORAGE_KEY_LOGGEDIN_USER,
+} from "../constants/storage.constatns";
 import { CREDIT_VALUE } from "../constants/values.constants";
 import { ContactTransactionType } from "../enums/Contact/ContactTransactionType";
-import { UserAuthResponse } from "../models/auth/Login/Login.response";
 import { ContactModel } from "../types/contact/contact.type";
 import { CountryModel } from "../types/country/CountryModel";
+import { UserModel } from "../types/user.type";
 
 const getMostRecentObject = (arr: any) => {
   if (arr.length === 0) {
@@ -24,7 +27,7 @@ const getMostRecentObject = (arr: any) => {
   return mostRecentObject;
 };
 
-function getContactPurchaseType(user: UserAuthResponse | null) {
+function getContactPurchaseType(user: UserModel | null) {
   if (user) {
     return user.contactTransactions.filter(
       (transaction) =>
@@ -33,7 +36,7 @@ function getContactPurchaseType(user: UserAuthResponse | null) {
   } else return [];
 }
 
-function saveLocalUser(user: UserAuthResponse) {
+function saveLocalUser(user: UserModel) {
   sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user));
   return user;
 }
@@ -45,7 +48,7 @@ function getLocalUserCountryPreference(): CountryModel | null {
   return user.countryPreferences[0];
 }
 
-function getLoggedinUser(): UserAuthResponse | null {
+function getLoggedinUser(): UserModel | null {
   const user = sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER);
   if (!user) return null;
   return JSON.parse(user);
@@ -55,15 +58,26 @@ function clearLocalUser() {
   sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER);
 }
 
-function calculateUserCredits(cart: ContactModel[], user: UserAuthResponse) {
+function calculateUserCredits(cart: ContactModel[], user: UserModel) {
   const sum = cart.reduce((acc, contact) => (acc += contact.price), 0);
   if (user.credits >= sum / CREDIT_VALUE) return true;
   else return false;
 }
 
-function isAgent(user: UserAuthResponse | null): boolean {
+function isAgent(user: UserModel | null): boolean {
   if (!user) return false;
   return user.permissions.includes("agent");
+}
+
+function saveUserJwtToken(token: string) {
+  sessionStorage.setItem(STORAGE_KEY_JWT_TOKEN, token);
+  return token;
+}
+
+function getUserJwtToken() {
+  const token = sessionStorage.getItem(STORAGE_KEY_JWT_TOKEN);
+  if (!token) return null;
+  return token;
 }
 
 export const userUtilService = {
@@ -75,4 +89,6 @@ export const userUtilService = {
   calculateUserCredits,
   getLocalUserCountryPreference,
   isAgent,
+  saveUserJwtToken,
+  getUserJwtToken,
 };

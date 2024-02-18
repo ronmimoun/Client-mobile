@@ -5,7 +5,6 @@ import { userSelectors } from "../../../../store/user/user.selectors";
 import { useAppDispatch } from "../../../../store";
 import { ContactModel } from "../../../../types/contact/contact.type";
 import { userActions } from "../../../../store/user/user.actions";
-import { UserAuthResponse } from "../../../../models/auth/Login/Login.response";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { GenericResponse } from "../../../../utils/api.utils";
 import { ContactIcon } from "../../../ui/Icons";
@@ -14,6 +13,7 @@ import { POPUP_MESSAGE } from "../../../../constants/popup.constants";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { cartActions } from "../../../../store/cart/cart.actions";
+import { UserModel } from "../../../../types/user.type";
 
 type ContactProps = {
   contact: ContactModel;
@@ -21,9 +21,7 @@ type ContactProps = {
 };
 
 const Contact = ({ contact, clickContactLink }: ContactProps) => {
-  const currentUser = useSelector(
-    userSelectors.currentUser()
-  ) as UserAuthResponse;
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
   const [isFavorite, setIsFavorite] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
@@ -42,14 +40,14 @@ const Contact = ({ contact, clickContactLink }: ContactProps) => {
   };
 
   const onAddFavorite = async (item: ContactModel) => {
-    const updatedUser: UserAuthResponse = {
+    const updatedUser: UserModel = {
       ...currentUser,
       favorites: [...currentUser.favorites, item],
     };
 
     const userResponse = (await dispatch(
       userActions.userUpdateThunk(updatedUser)
-    )) as PayloadAction<GenericResponse<UserAuthResponse>>;
+    )) as PayloadAction<GenericResponse<UserModel>>;
 
     if (!userResponse.payload.isSucceeded || !userResponse.payload.data) return;
 
@@ -58,7 +56,7 @@ const Contact = ({ contact, clickContactLink }: ContactProps) => {
   };
 
   const onRemoveFavorite = async (itemId: string) => {
-    const updatedUser: UserAuthResponse = {
+    const updatedUser: UserModel = {
       ...currentUser,
       favorites: currentUser.favorites.filter(
         (favorite) => favorite._id !== itemId
@@ -66,7 +64,7 @@ const Contact = ({ contact, clickContactLink }: ContactProps) => {
     };
     const userResponse = (await dispatch(
       userActions.userUpdateThunk(updatedUser)
-    )) as PayloadAction<GenericResponse<UserAuthResponse>>;
+    )) as PayloadAction<GenericResponse<UserModel>>;
 
     if (!userResponse.payload.isSucceeded || !userResponse.payload.data) return;
 

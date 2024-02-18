@@ -3,7 +3,7 @@ import {
   ActionReducerMapBuilder,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { UserAuthResponse } from "../../../models/auth/Login/Login.response";
+import { LoginResponse } from "../../../models/auth/Login/Login.response";
 import { LoginRequest } from "../../../models/auth/Login/Login.request";
 import { UserState } from "../user-state";
 import { userUtilService } from "../../../utils/user.utils";
@@ -11,7 +11,7 @@ import { authApiService } from "../../../services/http/api/auth.api.service";
 
 export type UserAuthThunkResponse = {
   isSucceeded: boolean;
-  data: UserAuthResponse | null;
+  data: LoginResponse | null;
 };
 
 export const loginThunk = createAsyncThunk(
@@ -23,11 +23,15 @@ export const loginThunk = createAsyncThunk(
       data: null,
     };
 
-    if (!userResponse.isSucceeded || !userResponse.data) return flowResponse;
+    if (!userResponse.isSucceeded || !userResponse.data?.content)
+      return flowResponse;
 
-    const user = userResponse.data.content;
-    userUtilService.saveLocalUser(user);
-    return { isSucceeded: true, data: user };
+    const payload = userResponse.data.content;
+
+    userUtilService.saveLocalUser(payload.user);
+    userUtilService.saveUserJwtToken(payload.jwtToken);
+
+    return { isSucceeded: true, data: payload };
   }
 );
 
@@ -40,11 +44,13 @@ export const loginThunkBuilder = (
       loginThunk.fulfilled,
       (state, action: PayloadAction<UserAuthThunkResponse>) => {
         if (!action.payload.data) return;
-        const user = action.payload.data;
-        state.currentUser = user;
+        const payload = action.payload.data;
 
-        if (!user.countryPreferences.length) return;
-        state.countryPreference = user.countryPreferences[0];
+        state.currentUser = payload.user;
+        state.jwtToken = payload.jwtToken;
+
+        if (!payload.user.countryPreferences.length) return;
+        state.countryPreference = payload.user.countryPreferences[0];
       }
     )
     .addCase(loginThunk.rejected, () => {});

@@ -6,7 +6,6 @@ import { userSelectors } from "../../../store/user/user.selectors";
 import { useAppDispatch } from "../../../store";
 import { ROUTES } from "../../../constants/routes.constants";
 import { LoadingButton } from "../../../components/ui/LoadingButton/LoadingButton";
-import { UserAuthResponse } from "../../../models/auth/Login/Login.response";
 import { userActions } from "../../../store/user/user.actions";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { GenericResponse } from "../../../utils/api.utils";
@@ -15,6 +14,7 @@ import { POPUP_MESSAGE } from "../../../constants/popup.constants";
 import { cartActions } from "../../../store/cart/cart.actions";
 import { contactApiService } from "../../../services/http/api/contact.api.service";
 import { MESSAGES } from "../../../constants/messages.constants";
+import { UserModel } from "../../../types/user.type";
 
 type ScenariosPurchaseButtonProps = {
   contact: ContactModel;
@@ -29,22 +29,20 @@ export const ScenariosPurchaseButton = ({
   isFavorite,
   setIsFavorite,
 }: ScenariosPurchaseButtonProps) => {
-  const currentUser = useSelector(
-    userSelectors.currentUser()
-  ) as UserAuthResponse;
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const onAddFavorite = async () => {
-    const updatedUser: UserAuthResponse = {
+    const updatedUser: UserModel = {
       ...currentUser,
       favorites: [...currentUser.favorites, contact],
     };
 
     const userResponse = (await dispatch(
       userActions.userUpdateThunk(updatedUser)
-    )) as PayloadAction<GenericResponse<UserAuthResponse>>;
+    )) as PayloadAction<GenericResponse<UserModel>>;
 
     if (!userResponse.payload.isSucceeded || !userResponse.payload.data) return;
 
@@ -53,7 +51,7 @@ export const ScenariosPurchaseButton = ({
   };
 
   const onRemoveFavorite = async () => {
-    const updatedUser: UserAuthResponse = {
+    const updatedUser: UserModel = {
       ...currentUser,
       favorites: currentUser.favorites.filter(
         (favorite) => favorite._id !== contact._id
@@ -61,7 +59,7 @@ export const ScenariosPurchaseButton = ({
     };
     const userResponse = (await dispatch(
       userActions.userUpdateThunk(updatedUser)
-    )) as PayloadAction<GenericResponse<UserAuthResponse>>;
+    )) as PayloadAction<GenericResponse<UserModel>>;
 
     if (!userResponse.payload.isSucceeded || !userResponse.payload.data) return;
 
@@ -100,7 +98,6 @@ export const ScenariosPurchaseButton = ({
     dispatch(
       cartActions.contactRefundThunk({
         transactionId: transaction._id,
-        userId: currentUser._id,
       })
     );
   };

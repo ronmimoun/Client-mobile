@@ -23,7 +23,7 @@ import {
 import { IoIosContact } from "react-icons/io";
 import { MdOutlineJoinInner } from "react-icons/md";
 import { userUtilService } from "../../../utils/user.utils";
-import { UserAuthResponse } from "../../../models/auth/Login/Login.response";
+import { UserModel } from "../../../types/user.type";
 
 type OffcanvasModalProps = {
   activeStatus: (status: boolean) => void;
@@ -36,9 +36,7 @@ const OffcanvasModal = ({
   show,
   onClose,
 }: OffcanvasModalProps) => {
-  const currentUser = useSelector(
-    userSelectors.currentUser()
-  ) as UserAuthResponse;
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
   const dispatch = useAppDispatch();
 
   useEffect(() => {

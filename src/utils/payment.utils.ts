@@ -20,17 +20,16 @@ function createCreditPaymentRequest(requestPayload: {
   return [trans];
 }
 
-async function createContactPaymentRequest(requestPayload: ContactModel[]) {
+async function createContactPaymentRequest(contacts: ContactModel[]) {
   const user = store.getState().user.currentUser;
 
   if (!user) return;
-  const transactions = requestPayload.map(
+  const transactions = contacts.map(
     (contact) => new ContactTransaction(contact, user._id)
   );
 
   const payload = {
     transactions,
-    userId: user._id,
     type: ContactTransactionType.ContactPurchase,
   };
 

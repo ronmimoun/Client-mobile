@@ -2,18 +2,18 @@ import { createAsyncThunk, ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import { ContactModel } from "../../../types/contact/contact.type";
 import { RootState } from "../../root.reducers";
 import { userUtilService } from "../../../utils/user.utils";
-import { UserAuthResponse } from "../../../models/auth/Login/Login.response";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../../constants/popup.constants";
 import { paymentUtilService } from "../../../utils/payment.utils";
 import { userActions } from "../../user/user.actions";
 import { buildResponse } from "../../../utils/api.utils";
+import { UserModel } from "../../../types/user.type";
 
 export const contactPurchase = createAsyncThunk(
   "cart/contactPurchase",
   async (requestPayload: ContactModel[], thunkApi) => {
     const user = (thunkApi.getState() as RootState).user
-      .currentUser as UserAuthResponse;
+      .currentUser as UserModel;
 
     if (!userUtilService.calculateUserCredits(requestPayload, user)) {
       toast(POPUP_MESSAGE.CART.NOT_ENOUGH_CREDITS);

@@ -7,7 +7,6 @@ import { PAGES_TITLE } from "../../constants/page-title.constants";
 import { userSelectors } from "../../store/user/user.selectors";
 import { useAppDispatch } from "../../store";
 import { cartSelectors } from "../../store/cart/cart.selectors";
-import { UserAuthResponse } from "../../models/auth/Login/Login.response";
 import { FIXED_PRICE } from "../../constants/values.constants";
 import { LoadingButton } from "../../components/ui/LoadingButton/LoadingButton";
 import { FaCartArrowDown } from "react-icons/fa";
@@ -15,12 +14,11 @@ import { cartActions } from "../../store/cart/cart.actions";
 import { ROUTES } from "../../constants/routes.constants";
 import ContactInfo from "../../components/feature/Contacts/Contact/ContactInfo";
 import PageLayout from "../../layout/PageLayout";
+import { UserModel } from "../../types/user.type";
 
 export const Cart = () => {
   const contactCart = useSelector(cartSelectors.cart());
-  const currentUser = useSelector(
-    userSelectors.currentUser()
-  ) as UserAuthResponse;
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 

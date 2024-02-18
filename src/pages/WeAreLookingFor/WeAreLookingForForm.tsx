@@ -6,7 +6,6 @@ import {
 } from "../../form/schemas/WeAreLookingForSchema";
 import { FormProvider, useForm } from "react-hook-form";
 import { CategoryModel } from "../../store/categoryManager/categoryManager-state";
-import { UserAuthResponse } from "../../models/auth/Login/Login.response";
 import { userSelectors } from "../../store/user/user.selectors";
 import { useSelector } from "react-redux";
 import { categoryManagerSelectors } from "../../store/categoryManager/categoryManager.selectors";
@@ -25,14 +24,13 @@ import { contactApiService } from "../../services/http/api/contact.api.service";
 import { ROUTES } from "../../constants/routes.constants";
 import { toast } from "react-toastify";
 import { MESSAGES } from "../../constants/messages.constants";
+import { UserModel } from "../../types/user.type";
 
 const WeAreLookingForForm = () => {
   const { categories, jobTitles, countries } = useSelector(
     categoryManagerSelectors.categoryManager()
   );
-  const currentUser = useSelector(
-    userSelectors.currentUser()
-  ) as UserAuthResponse;
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
   const [selectedCategory, setSelectedCategory] = useState<CategoryModel>();
   const [selectedContact, setSelectedContact] = useState<ContactModel>();
   const { contactId } = useParams();

@@ -12,7 +12,7 @@ import { ContactPaymentResponse } from "../../models/payment/contact/contactPaym
 import { RefundContactRequest } from "../../models/payment/refund/refund.request";
 import { RefundContactResponse } from "../../models/payment/refund/refund.response";
 
-const paymentHttpInstace = createManagedAxiosInstance(
+const paymentHttpInstance = createManagedAxiosInstance(
   buildGeneralApiInstanceConfig(getBaseURl())
 );
 
@@ -26,7 +26,7 @@ const createCreditPayment = async (
   };
 
   const response =
-    await paymentHttpInstace.managedRequest<CreditPaymentResponse>(options);
+    await paymentHttpInstance.managedRequest<CreditPaymentResponse>(options);
   return response;
 };
 
@@ -40,7 +40,7 @@ const createContactPayment = async (
   };
 
   const response =
-    await paymentHttpInstace.managedRequest<ContactPaymentResponse>(options);
+    await paymentHttpInstance.managedRequest<ContactPaymentResponse>(options);
   return response;
 };
 
@@ -54,7 +54,7 @@ const refundContactPayment = async (
   };
 
   const response =
-    await paymentHttpInstace.managedRequest<RefundContactResponse>(options);
+    await paymentHttpInstance.managedRequest<RefundContactResponse>(options);
   return response;
 };
 

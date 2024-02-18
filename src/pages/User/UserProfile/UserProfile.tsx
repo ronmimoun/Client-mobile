@@ -1,16 +1,14 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { userSelectors } from "../../../store/user/user.selectors";
-import { UserAuthResponse } from "../../../models/auth/Login/Login.response";
 import { DUMMY_USER_URL } from "../../../constants/image.constants";
 import { ROUTES } from "../../../constants/routes.constants";
 import { FaEdit } from "react-icons/fa";
 import { userUtilService } from "../../../utils/user.utils";
+import { UserModel } from "../../../types/user.type";
 
 export const UserProfile = () => {
-  const currentUser = useSelector(
-    userSelectors.currentUser()
-  ) as UserAuthResponse;
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
 
   return (
     <div className="body-wrapper space-pb--120">

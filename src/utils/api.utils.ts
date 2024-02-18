@@ -1,7 +1,7 @@
 export function getBaseURl() {
   return process.env.NODE_ENV === "production"
     ? "https://qleads.mobi/api/" || ""
-    : "http://localhost:3030/api/";
+    : "http://localhost:80/api/";
 }
 
 export const buildResponse = <T>(

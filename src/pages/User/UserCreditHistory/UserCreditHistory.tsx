@@ -3,9 +3,10 @@ import { userSelectors } from "../../../store/user/user.selectors";
 import { timeUtilService } from "../../../utils/date.utils";
 import { PAGES_TITLE } from "../../../constants/page-title.constants";
 import PageLayout from "../../../layout/PageLayout";
+import { UserModel } from "../../../types/user.type";
 
 export const UserCreditsHistory = () => {
-  const currentUser = useSelector(userSelectors.currentUser());
+  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
 
   return (
     <PageLayout title={PAGES_TITLE.USER_CREDIT_HISTORY_PAGE.TITLE_NAME}>
