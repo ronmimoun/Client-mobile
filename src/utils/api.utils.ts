@@ -1,7 +1,7 @@
 export function getBaseURl() {
   return process.env.NODE_ENV === "production"
-    ? "https://qleads.mobi/api/" || ""
-    : "http://localhost:80/api/";
+    ? import.meta.env.VITE_APP_SERVER_BASE_URL
+    : import.meta.env.VITE_APP_LOCAL_BASE_URL;
 }
 
 export const buildResponse = <T>(
