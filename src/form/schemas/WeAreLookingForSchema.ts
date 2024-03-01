@@ -79,7 +79,7 @@ export const WE_ARE_LOOKING_FOR_FORM_SCHEMA = z.object({
     },
   }),
   desc: z.string(),
-  phone: z.string().regex(REGEX.PHONE, MESSAGES.VALIDATION_ERROR.PHONE),
+  phone: z.string().regex(REGEX.PHONE.REGEX, MESSAGES.VALIDATION_ERROR.PHONE),
   linkedinLink: z
     .string()
     .regex(REGEX.LINKED_IN, MESSAGES.VALIDATION_ERROR.LINKED_IN_LINK),
