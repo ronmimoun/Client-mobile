@@ -1,14 +1,20 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useCallback } from "react";
 import { FiFacebook } from "react-icons/fi";
-import { useForm } from "react-hook-form";
+import { FormProvider, useForm } from "react-hook-form";
 import { useAppDispatch } from "../../store";
 import { userActions } from "../../store/user/user.actions";
 import { UserAuthThunkResponse } from "../../store/user/user-thunks/loginThunkBuilder";
 import { ROUTES } from "../../constants/routes.constants";
 import { FaGoogle } from "react-icons/fa";
-import { LOGIN_SCHEMA, LoginForm } from "../../form/schemas/LoginSchema";
+import {
+  LOGIN_FORM_CONFIG,
+  LOGIN_SCHEMA,
+  LoginForm,
+} from "../../form/schemas/LoginSchema";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { InputController } from "../../components/form/controllers/InputController";
+import { PrimaryButton } from "../../components/ui/PrimaryButton/PrimaryButton";
 
 export const Login = () => {
   const dispatch = useAppDispatch();
@@ -16,8 +22,8 @@ export const Login = () => {
 
   const formMethods = useForm<LoginForm>({
     defaultValues: {
-      username: "",
-      password: "",
+      username: LOGIN_FORM_CONFIG.INPUTS.USERNAME.DEFAULT_VALUE,
+      password: LOGIN_FORM_CONFIG.INPUTS.PASSWORD.DEFAULT_VALUE,
     },
     resolver: zodResolver(LOGIN_SCHEMA),
   });
@@ -52,25 +58,23 @@ export const Login = () => {
           <div className="row">
             <div className="col-12">
               {/* Auth form */}
-              <div className="auth-form">
+
+              {/* <div className="auth-form"> */}
+              <FormProvider {...formMethods}>
                 <form onSubmit={formMethods.handleSubmit(onSubmit)}>
-                  <div className="auth-form__single-field space-mb--30">
-                    <label htmlFor="username">Username</label>
-                    <input
-                      type="text"
-                      placeholder="Enter Username"
-                      {...formMethods.register("username", { required: true })}
-                    />
-                  </div>
-                  <div className="auth-form__single-field space-mb--30">
-                    <label htmlFor="password">Password</label>
-                    <input
-                      type="password"
-                      placeholder="Enter Password"
-                      {...formMethods.register("password", { required: true })}
-                    />
-                  </div>
-                  <div className="auth-form__single-field space-mb--40">
+                  <InputController
+                    className="mb_1"
+                    label={LOGIN_FORM_CONFIG.INPUTS.USERNAME.LABEL}
+                    name={LOGIN_FORM_CONFIG.INPUTS.USERNAME.KEY}
+                    required={LOGIN_FORM_CONFIG.INPUTS.USERNAME.REQUIRED}
+                  />
+                  <InputController
+                    className="mb_1"
+                    label={LOGIN_FORM_CONFIG.INPUTS.PASSWORD.LABEL}
+                    name={LOGIN_FORM_CONFIG.INPUTS.PASSWORD.KEY}
+                    required={LOGIN_FORM_CONFIG.INPUTS.PASSWORD.REQUIRED}
+                  />
+                  <div className="auth-form__single-field mb_1">
                     <p className="auth-form__info-text">
                       Don't have an account?{" "}
                       <Link to={ROUTES.REGISTER_PAGE.FULL_ROUTE_NAME}>
@@ -78,9 +82,10 @@ export const Login = () => {
                       </Link>
                     </p>
                   </div>
-                  <button className="auth-form__button">Login</button>
+                  <PrimaryButton type="submit">Login</PrimaryButton>
                 </form>
-              </div>
+              </FormProvider>
+              {/* </div> */}
             </div>
           </div>
         </div>

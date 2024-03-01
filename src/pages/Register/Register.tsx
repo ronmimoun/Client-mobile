@@ -14,6 +14,8 @@ import { POPUP_MESSAGE } from "../../constants/popup.constants";
 import { useAppDispatch } from "../../store";
 import { userActions } from "../../store/user/user.actions";
 import { RegisterThunkResponse } from "../../store/user/user-thunks/registerThunkBuilder";
+import { PrimaryButton } from "../../components/ui/PrimaryButton/PrimaryButton";
+import { InputController } from "../../components/form/controllers/InputController";
 
 export const Register = () => {
   const formMethods = useForm<RegisterForm>({
@@ -81,116 +83,63 @@ export const Register = () => {
           <div className="row">
             <div className="col-12">
               {/* Auth form */}
-              <div className="auth-form">
-                <FormProvider {...formMethods}>
-                  <form onSubmit={formMethods.handleSubmit(onSubmit)}>
-                    <div className="auth-form__single-field space-mb--30">
-                      <label htmlFor="username">Username</label>
-                      <input
-                        {...formMethods.register(
-                          REGISTER_FORM_CONFIG.INPUTS.USERNAME.KEY
-                        )}
-                        type="text"
-                        id="username"
-                        placeholder={
-                          REGISTER_FORM_CONFIG.INPUTS.USERNAME.PLACEHOLDER
-                        }
-                      />
-                    </div>
-                    <div className="auth-form__single-field space-mb--30">
-                      <label htmlFor="name">First Name</label>
-                      <input
-                        {...formMethods.register(
-                          REGISTER_FORM_CONFIG.INPUTS.NAME.KEY
-                        )}
-                        type="text"
-                        id="name"
-                        placeholder={
-                          REGISTER_FORM_CONFIG.INPUTS.NAME.PLACEHOLDER
-                        }
-                      />
-                    </div>
-                    <div className="auth-form__single-field space-mb--30">
-                      <label htmlFor="lastName">Last Name</label>
-                      <input
-                        {...formMethods.register(
-                          REGISTER_FORM_CONFIG.INPUTS.LAST_NAME.KEY
-                        )}
-                        type="text"
-                        id="lastName"
-                        placeholder={
-                          REGISTER_FORM_CONFIG.INPUTS.LAST_NAME.PLACEHOLDER
-                        }
-                      />
-                    </div>
-                    <div className="auth-form__single-field space-mb--30">
-                      <label htmlFor="emailAddress">Email Address</label>
-                      <input
-                        {...formMethods.register(
-                          REGISTER_FORM_CONFIG.INPUTS.EMAIL.KEY
-                        )}
-                        type="text"
-                        id="emailAddress"
-                        placeholder={
-                          REGISTER_FORM_CONFIG.INPUTS.EMAIL.PLACEHOLDER
-                        }
-                      />
-                    </div>
-                    <div className="auth-form__single-field space-mb--30">
-                      <label>Password</label>
-                      <input
-                        {...formMethods.register(
-                          REGISTER_FORM_CONFIG.INPUTS.PASSWORD.KEY
-                        )}
-                        type="password"
-                        id="password"
-                        placeholder={
-                          REGISTER_FORM_CONFIG.INPUTS.PASSWORD.PLACEHOLDER
-                        }
-                      />
-                    </div>
-                    <div className="auth-form__single-field space-mb--30">
-                      <label htmlFor="confirmPassword">Confirm Password</label>
-                      <input
-                        {...formMethods.register(
-                          REGISTER_FORM_CONFIG.INPUTS.CONFIRM_PASSWORD.KEY
-                        )}
-                        type="password"
-                        id="confirmPassword"
-                        placeholder={
-                          REGISTER_FORM_CONFIG.INPUTS.CONFIRM_PASSWORD
-                            .PLACEHOLDER
-                        }
-                      />
-                    </div>
-                    <div className="auth-form__single-field space-mb--30">
-                      <label htmlFor="phone">Phone Number</label>
-                      <input
-                        {...formMethods.register(
-                          REGISTER_FORM_CONFIG.INPUTS.PHONE.KEY
-                        )}
-                        type="number"
-                        name="phone"
-                        id="phone"
-                        placeholder={
-                          REGISTER_FORM_CONFIG.INPUTS.PHONE.PLACEHOLDER
-                        }
-                      />
-                    </div>
-                    <div className="auth-form__single-field space-mb--40">
-                      <p className="auth-form__info-text">
-                        Already have an account?{" "}
-                        <Link to={ROUTES.LOGIN_PAGE.FULL_ROUTE_NAME}>
-                          Sign in Now
-                        </Link>
-                      </p>
-                    </div>
-                    <button className="auth-form__button" type="submit">
-                      Sign Up
-                    </button>
-                  </form>
-                </FormProvider>
-              </div>
+              <FormProvider {...formMethods}>
+                <form onSubmit={formMethods.handleSubmit(onSubmit)}>
+                  <InputController
+                    className="mb_1"
+                    label={REGISTER_FORM_CONFIG.INPUTS.USERNAME.LABEL}
+                    name={REGISTER_FORM_CONFIG.INPUTS.USERNAME.KEY}
+                    required={REGISTER_FORM_CONFIG.INPUTS.USERNAME.REQUIRED}
+                  />
+                  <InputController
+                    className="mb_1"
+                    label={REGISTER_FORM_CONFIG.INPUTS.NAME.LABEL}
+                    name={REGISTER_FORM_CONFIG.INPUTS.NAME.KEY}
+                    required={REGISTER_FORM_CONFIG.INPUTS.NAME.REQUIRED}
+                  />
+                  <InputController
+                    className="mb_1"
+                    label={REGISTER_FORM_CONFIG.INPUTS.LAST_NAME.LABEL}
+                    name={REGISTER_FORM_CONFIG.INPUTS.LAST_NAME.KEY}
+                    required={REGISTER_FORM_CONFIG.INPUTS.LAST_NAME.REQUIRED}
+                  />
+                  <InputController
+                    className="mb_1"
+                    label={REGISTER_FORM_CONFIG.INPUTS.EMAIL.LABEL}
+                    name={REGISTER_FORM_CONFIG.INPUTS.EMAIL.KEY}
+                    required={REGISTER_FORM_CONFIG.INPUTS.EMAIL.REQUIRED}
+                  />
+                  <InputController
+                    className="mb_1"
+                    label={REGISTER_FORM_CONFIG.INPUTS.PASSWORD.LABEL}
+                    name={REGISTER_FORM_CONFIG.INPUTS.PASSWORD.KEY}
+                    required={REGISTER_FORM_CONFIG.INPUTS.PASSWORD.REQUIRED}
+                  />
+                  <InputController
+                    className="mb_1"
+                    label={REGISTER_FORM_CONFIG.INPUTS.CONFIRM_PASSWORD.LABEL}
+                    name={REGISTER_FORM_CONFIG.INPUTS.CONFIRM_PASSWORD.KEY}
+                    required={
+                      REGISTER_FORM_CONFIG.INPUTS.CONFIRM_PASSWORD.REQUIRED
+                    }
+                  />
+                  <InputController
+                    className="mb_1"
+                    label={REGISTER_FORM_CONFIG.INPUTS.PHONE.LABEL}
+                    name={REGISTER_FORM_CONFIG.INPUTS.PHONE.KEY}
+                    required={REGISTER_FORM_CONFIG.INPUTS.PHONE.REQUIRED}
+                  />
+                  <div className="auth-form__single-field space-mb--40">
+                    <p className="auth-form__info-text">
+                      Already have an account?{" "}
+                      <Link to={ROUTES.LOGIN_PAGE.FULL_ROUTE_NAME}>
+                        Sign in Now
+                      </Link>
+                    </p>
+                  </div>
+                  <PrimaryButton type="submit">Sign Up</PrimaryButton>
+                </form>
+              </FormProvider>
             </div>
           </div>
         </div>

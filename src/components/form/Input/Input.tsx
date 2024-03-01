@@ -16,6 +16,7 @@ export const Input = ({
   type,
   name,
   required,
+  className,
 }: InputProps) => {
   const {
     register,
@@ -23,10 +24,10 @@ export const Input = ({
   } = useFormContext();
 
   return (
-    <div className="input-container">
+    <div className={`input-container ${className}`}>
       {label && <label>{label}</label>}
       {errors[name] && (
-        <p>
+        <p className="input-container__error">
           <MdErrorOutline />
           {errors[name]?.message as string}
         </p>

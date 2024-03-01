@@ -16,10 +16,14 @@
     &:has(textarea:disabled) {
         background-color: $grey--thirtyOne;
     }
+
+    &__error {
+        color: $red--two;
+    }
 }
 
 .input-error {
-    border: 1px solid red;
+    border: 1px solid $red--two;
 }
 
 .input {

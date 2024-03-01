@@ -1,13 +1,15 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ButtonBase, ButtonBaseProps } from "../buttons/ButtonBase/ButtonBase";
 
-type PrimaryButtonProps = {
-  children: ReactNode;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+type PrimaryButtonProps = {} & ButtonBaseProps;
 
-export const PrimaryButton = ({ children, ...props }: PrimaryButtonProps) => {
+export const PrimaryButton = ({
+  children,
+  className = "",
+  ...props
+}: PrimaryButtonProps) => {
   return (
-    <button {...props} className="primary_button">
+    <ButtonBase {...props} className={`primary_button ${className}`}>
       {children}
-    </button>
+    </ButtonBase>
   );
 };

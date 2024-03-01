@@ -1,6 +1,14 @@
 /*=============================================
 =            Button            =
 =============================================*/
+
+.button_base {
+    font-size: 1.1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
 .button {
     width: 100%;
     background-color: $purple--one;
