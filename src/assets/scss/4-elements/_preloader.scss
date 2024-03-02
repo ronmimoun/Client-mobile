@@ -4,18 +4,16 @@
 
 .preloader-active {
     position: fixed;
-    z-index: 999999;
+    z-index: $global-loader-index;
     top: 0;
     left: 0;
-
     overflow: hidden;
-
     width: 100vw;
     height: 100vh;
 
     .preloader-area-wrap {
         position: absolute;
-        z-index: 999999;
+        z-index: $global-loader-index;
         top: 0;
         left: 0;
 

@@ -7,14 +7,15 @@ import { FilterModeEnum } from "../../../types/modals/SelectModal";
 import SelectModal from "../../../components/modals/SelectModal";
 import { textUtilService } from "../../../utils/text.utils";
 import ContactList from "../../../components/feature/Contacts/ContactList/ContactList";
+import { ButtonIconBase } from "../../../components/ui/buttons/ButtonIconBase/ButtonIconBase";
 
 export const ContactsByCategoryPage = () => {
   const location = useLocation();
   const [selectedFilters, setSelectedFilters] = useState<SelectedFilters>();
   const cat = location.pathname.split(FORWARD_SLASH)[2];
 
-  const handleFilterDelete = (type: string | boolean | number) => {
-    if (!selectedFilters) return;
+  const handleFilterDelete = (type?: string | boolean | number) => {
+    if (!selectedFilters || !type) return setSelectedFilters({});
     const filters = { ...selectedFilters };
     for (const filter in filters) {
       if ((filters as any)[filter] === type) {
@@ -36,27 +37,30 @@ export const ContactsByCategoryPage = () => {
           setSelectedFilters={handleFilterSelect}
           cat={cat}
         />
-
-        {selectedFilters && Object.values(selectedFilters).length > 0 && (
-          <div className="container flex justify-space mt-4 mb-4">
-            <div className="flex align-center gap-2">
-              <ExitIcon />
-              <h4>Filters {`(${Object.values(selectedFilters).length})`}</h4>
-            </div>
-
-            <div className="flex align-center gap-2 contact-category-filters">
-              {Object.values(selectedFilters).map((filter, idx) => (
-                <h4 key={idx} className="filter__item">
-                  {filter}
-                  <span onClick={() => handleFilterDelete(filter)}>
-                    <ExitIcon />
-                  </span>
-                </h4>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
+
+      {selectedFilters && Object.values(selectedFilters).length > 0 && (
+        <div className="filters_container">
+          <div className="filters_button">
+            <ButtonIconBase
+              className="filters_button__button"
+              onClick={() => handleFilterDelete()}
+            >
+              <ExitIcon />
+            </ButtonIconBase>
+            <h4>Filters {`(${Object.values(selectedFilters).length})`}</h4>
+          </div>
+
+          <div className="filters_tag">
+            {Object.values(selectedFilters).map((filter, idx) => (
+              <h4 key={idx} className="filter__item">
+                {filter}
+              </h4>
+            ))}
+          </div>
+        </div>
+      )}
+
       <ContactList
         cat={cat}
         filters={selectedFilters}

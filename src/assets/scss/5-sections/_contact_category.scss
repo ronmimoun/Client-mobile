@@ -14,7 +14,28 @@
     }
 }
 
-.contact-category-filters {
+.filters_container {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+}
+
+.filters_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    &__button svg {
+        width: 1rem;
+        height: 1rem;
+    }
+}
+
+.filters_tag {
+    display: flex;
+    gap: 0.5rem;
+
     & .filter__item {
         background-color: $grey--seven;
         display: flex;

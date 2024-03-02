@@ -6,6 +6,7 @@ import { contactApiService } from "../../services/http/api/contact.api.service";
 import { ContactModel } from "../../types/contact/contact.type";
 import Breadcrumb from "../../components/ui/Breadcrumb";
 import Contact from "../../components/feature/Contacts/Contact/Contact";
+import PageLayout from "../../layout/PageLayout";
 
 export const Income = () => {
   const currentUser = useSelector(userSelectors.currentUser());
@@ -26,11 +27,10 @@ export const Income = () => {
   };
 
   return (
-    <div className="body-wrapper space-pb--120 backgrounds__white-top">
-      <Breadcrumb pageTitle="Income" />
+    <PageLayout breadCrumbProps={{ pageTitle: "Income" }}>
       {contactSales.map((contact) => (
         <Contact key={contact._id} contact={contact} />
       ))}
-    </div>
+    </PageLayout>
   );
 };

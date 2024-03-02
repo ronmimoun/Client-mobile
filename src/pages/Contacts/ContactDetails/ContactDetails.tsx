@@ -68,7 +68,6 @@ export const ContactDetails = () => {
       )
         ? true
         : false;
-      console.log("isOwned", isOwned);
       setIsOwned(isOwned);
     } else setIsOwned(false);
   };
