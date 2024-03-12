@@ -1,0 +1,28 @@
+@import '/src/assets/scss/1-base/variables';
+
+.message {
+    margin-bottom: 2rem;
+
+    &__header {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+        margin-bottom: 0.5rem;
+
+        &__image {
+            border-radius: 50%;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+    }
+
+    &__content {
+        background-color: $grey--seventeen-opacity;
+        padding: 1rem;
+        border-radius: 0.714rem;
+    }
+}
+
+.gpt_message {
+    flex-direction: row-reverse;
+}

@@ -8,9 +8,24 @@ export const useScrollToBottom = () => {
     });
   };
 
+  const scrollToElementBottom = (
+    containerRef: React.RefObject<HTMLDivElement>
+  ) => {
+    if (containerRef.current) {
+      const { scrollHeight, clientHeight } = containerRef.current;
+      containerRef.current.scrollTo({
+        top: scrollHeight - clientHeight,
+        behavior: "smooth",
+      });
+    }
+  };
+
   useEffect(() => {
     handleScrollToBottom();
   }, []);
 
-  return handleScrollToBottom;
+  return {
+    handleScrollToBottom,
+    scrollToElementBottom,
+  };
 };

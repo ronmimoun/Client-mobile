@@ -32,7 +32,7 @@ export const SupportChat = () => {
     },
     resolver: zodResolver(SUPPORT_CHAT_FORM_SCHEMA),
   });
-  const scrollDown = useScrollToBottom();
+  const { handleScrollToBottom } = useScrollToBottom();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export const SupportChat = () => {
   }, []);
 
   useUpdateEffect(() => {
-    scrollDown();
+    handleScrollToBottom();
     formMethods.setFocus(SUPPORT_CHAT_FORM_CONFIG.INPUTS.MESSAGE.KEY);
   }, [room]);
 

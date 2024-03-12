@@ -41,6 +41,7 @@ import { Credits } from "../pages/Credit/Credits";
 import AllContacts from "../pages/AllContacts/AllContacts";
 import WeAreLookingForList from "../pages/WeAreLookingFor/WeAreLookingForList";
 import WeAreLookingForForm from "../pages/WeAreLookingFor/WeAreLookingForForm";
+import AIChat from "../pages/AIChat/AIChat";
 
 const RoutesWrapper = () => {
   const currentUser = useSelector(userSelectors.currentUser());
@@ -159,7 +160,13 @@ const mainRouter = createBrowserRouter(
           element={<WeAreLookingForForm />}
         />
         <Route path={ROUTES.FEEDBACK_PAGE.PATH_NAME} element={<Feedback />} />
+
         <Route path={ROUTES.CART_PAGE.FULL_ROUTE_NAME} element={<Cart />} />
+
+        <Route
+          path={ROUTES.AI_CHAT_PAGE.FULL_ROUTE_NAME}
+          element={<AIChat />}
+        />
       </Route>
     </Route>
   )

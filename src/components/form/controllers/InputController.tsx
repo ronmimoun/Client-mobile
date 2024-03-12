@@ -1,11 +1,9 @@
-import React from "react";
 import { Controller, useFormContext } from "react-hook-form";
 import { Input, InputProps } from "../Input/Input";
 
 type InputControllerProps = {
   name: string;
-} & React.InputHTMLAttributes<HTMLInputElement> &
-  InputProps;
+} & InputProps;
 
 export const InputController = ({
   name,

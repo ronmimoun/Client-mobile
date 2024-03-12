@@ -59,4 +59,8 @@ export namespace PAGES_TITLE {
   export namespace CREDITS_CHAT_PAGE {
     export const TITLE_NAME = "Credits";
   }
+
+  export namespace AI_CHAT_PAGE {
+    export const TITLE_NAME = "AI Chat";
+  }
 }

@@ -164,4 +164,9 @@ export namespace ROUTES {
     export const PATH_NAME = "we-are-looking-for/:contactId";
     export const FULL_ROUTE_NAME = `${BASE}${ROUTE_NAME}`;
   }
+
+  export namespace AI_CHAT_PAGE {
+    export const ROUTE_NAME = "ai-chat";
+    export const FULL_ROUTE_NAME = `${BASE}${ROUTE_NAME}`;
+  }
 }

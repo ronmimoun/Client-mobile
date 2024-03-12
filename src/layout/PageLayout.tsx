@@ -17,9 +17,7 @@ export const PageLayout = ({
 }: PageLayoutProps) => {
   return (
     <div
-      className={`body-wrapper space-pb--120 ${
-        STYLES.BACKGROUND_COLOR.WHITE_TOP
-      } ${className || ""}`}
+      className={`body-wrapper space-pb--120 ${STYLES.BACKGROUND_COLOR.WHITE_TOP} ${className}`}
     >
       <Breadcrumb
         {...breadCrumbProps}

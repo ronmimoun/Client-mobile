@@ -8,7 +8,7 @@ export type InputProps = {
   name: string;
   className?: string;
   required?: boolean;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const Input = ({
   label,
@@ -17,6 +17,7 @@ export const Input = ({
   name,
   required,
   className,
+  ...props
 }: InputProps) => {
   const {
     register,
@@ -33,6 +34,7 @@ export const Input = ({
         </p>
       )}
       <input
+        {...props}
         className="input"
         required={required}
         placeholder={placeholder}

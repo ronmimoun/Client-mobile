@@ -1,11 +1,11 @@
-import { Fragment, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useLocation, useParams } from "react-router-dom";
 import { ROUTES } from "../constants/routes.constants";
-import { useAppDispatch } from "../store";
 import STYLES from "../constants/style.constants";
-import Footer from "../components/elements/Footer/Footer";
 import Header from "../components/elements/Header/Header";
+import Footer from "../components/elements/Footer/Footer";
+import { useAppDispatch } from "../store";
+import { useEffect } from "react";
 import { globalActions } from "../store/global/global.actions";
 
 interface DefaultAppLayout {
@@ -14,6 +14,7 @@ interface DefaultAppLayout {
 
 const DefaultAppLayout = () => {
   const location = useLocation();
+  const dispatch = useAppDispatch();
   const { id } = useParams();
   const backgroundPages = [
     ROUTES.HOME_PAGE.FULL_ROUTE_NAME,
@@ -39,9 +40,8 @@ const DefaultAppLayout = () => {
     ROUTES.ALL_CONTACTS_PAGE.FULL_ROUTE_NAME,
     ROUTES.WE_ARE_LOOKING_FOR_PAGE.FULL_ROUTE_NAME,
     ROUTES.WE_ARE_LOOKING_FOR_PAGE.FULL_ROUTE_NAME + "/" + id,
+    ROUTES.AI_CHAT_PAGE.FULL_ROUTE_NAME,
   ];
-
-  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const initThunkAsync = async () => {
@@ -72,10 +72,10 @@ const DefaultAppLayout = () => {
   };
 
   return (
-    <Fragment>
+    <>
       <ColorHeader />
       <Footer />
-    </Fragment>
+    </>
   );
 };
 

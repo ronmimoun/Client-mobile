@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { MdHistory } from "react-icons/md";
+import { BiChat } from "react-icons/bi";
 import { userSelectors } from "../../../store/user/user.selectors";
 import { elementUtilService } from "../../../utils/element.utils";
 import { DUMMY_USER_URL } from "../../../constants/image.constants";
@@ -102,6 +103,16 @@ const OffcanvasModal = ({
               <Link to={ROUTES.USER_PROFILE_PAGE.FULL_ROUTE_NAME}>
                 My Profile
               </Link>
+            </div>
+            <ArrowIcon className="offcanvas-menu__icon rotate_180" />
+          </li>
+
+          <li className="flex justify-space">
+            <div className="flex align-center">
+              <span className="__icon">
+                <BiChat />
+              </span>
+              <Link to={ROUTES.AI_CHAT_PAGE.FULL_ROUTE_NAME}>AI Chat</Link>
             </div>
             <ArrowIcon className="offcanvas-menu__icon rotate_180" />
           </li>
