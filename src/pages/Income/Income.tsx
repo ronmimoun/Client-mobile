@@ -4,7 +4,6 @@ import { useState } from "react";
 import { userSelectors } from "../../store/user/user.selectors";
 import { contactApiService } from "../../services/http/api/contact.api.service";
 import { ContactModel } from "../../types/contact/contact.type";
-import Breadcrumb from "../../components/ui/Breadcrumb";
 import Contact from "../../components/feature/Contacts/Contact/Contact";
 import PageLayout from "../../layout/PageLayout";
 
