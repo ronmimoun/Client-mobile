@@ -10,7 +10,7 @@ export const MyOrders = () => {
   const currentUser = useSelector(userSelectors.currentUser());
   const navigate = useNavigate();
 
-  const hasAgentMessages: boolean = !!currentUser.agentMessages.length;
+  const hasAgentMessages: boolean = !!currentUser?.agentMessages.length;
   return (
     <div className="body-wrapper backgrounds__white-top space-pb--120">
       <Breadcrumb
