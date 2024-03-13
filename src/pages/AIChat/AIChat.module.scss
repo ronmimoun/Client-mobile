@@ -3,6 +3,7 @@
 .container {
     min-height: calc(100vh - 117.2px);
     padding: 0px !important;
+    position: relative;
 }
 
 .wrapper {
@@ -11,19 +12,22 @@
     flex-direction: column;
     align-items: center;
     gap: 1rem;
+    padding-bottom: 10rem;
 
     &__chat {
         align-self: stretch;
-        height: calc(100vh - 16.657rem);
-        overflow-y: auto;
     }
 }
 
 .form {
+    background-color: $white;
+    position: fixed;
+    bottom: 3.5rem;
     display: flex;
     justify-content: space-between;
     gap: 1rem;
     width: 100%;
+    padding: 1rem 1rem;
 
     &__button {
         position: relative;

@@ -19,6 +19,8 @@
 html,
 body {
   height: 100%;
+  -webkit-user-scalable: none;
+  /* Prevent zooming on Safari */
 
   &.no-scroll {
     overflow: hidden;

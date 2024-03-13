@@ -24,15 +24,15 @@ const AIChat = () => {
   const [messages, setMessages] = useState<OpenAIMessageModel[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollToElementBottom } = useScrollToBottom();
+  const { handleScrollToBottom } = useScrollToBottom();
 
   useEffect(() => {
     formMethods.setFocus("message");
   }, []);
 
   useUpdateEffect(() => {
-    scrollToElementBottom(containerRef);
-  }, [containerRef, messages.length]);
+    handleScrollToBottom();
+  }, [messages.length]);
 
   const formMethods = useForm<AiChatFormType>({
     defaultValues: {
