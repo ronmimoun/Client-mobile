@@ -1,5 +1,5 @@
 import classes from "./ContactDetails.module.scss";
-import PageLayout from "../../../layout/PageLayout";
+import PageLayout from "../../../layout/PageLayout/PageLayout";
 import { useSelector } from "react-redux";
 import { userSelectors } from "../../../store/user/user.selectors";
 import { useEffect, useMemo, useState } from "react";

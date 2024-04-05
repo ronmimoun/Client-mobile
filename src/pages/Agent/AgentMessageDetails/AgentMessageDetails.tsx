@@ -14,7 +14,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { POPUP_MESSAGE } from "../../../constants/popup.constants";
 import { toast } from "react-toastify";
-import PageLayout from "../../../layout/PageLayout";
+import PageLayout from "../../../layout/PageLayout/PageLayout";
 import { PAGES_TITLE } from "../../../constants/page-title.constants";
 import { LoadingButton } from "../../../components/ui/LoadingButton/LoadingButton";
 import { userActions } from "../../../store/user/user.actions";

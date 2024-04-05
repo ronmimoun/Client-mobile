@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { PAGES_TITLE } from "../../constants/page-title.constants";
 import { ROUTES } from "../../constants/routes.constants";
-import PageLayout from "../../layout/PageLayout";
+import PageLayout from "../../layout/PageLayout/PageLayout";
 import { CreditCards } from "../../components/feature/CreditCards/CreditCards";
 
 export const PaymentMethods = () => {

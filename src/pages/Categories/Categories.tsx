@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { categoryManagerSelectors } from "../../store/categoryManager/categoryManager.selectors";
 import { PAGES_TITLE } from "../../constants/page-title.constants";
-import PageLayout from "../../layout/PageLayout";
+import PageLayout from "../../layout/PageLayout/PageLayout";
 
 const Categories = () => {
   const { categories } = useSelector(

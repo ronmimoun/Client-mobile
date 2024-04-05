@@ -1,5 +1,5 @@
 import classes from "./AIChat.module.scss";
-import PageLayout from "../../layout/PageLayout";
+import PageLayout from "../../layout/PageLayout/PageLayout";
 import { PAGES_TITLE } from "../../constants/page-title.constants";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

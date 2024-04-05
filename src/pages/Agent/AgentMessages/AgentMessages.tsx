@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import PageLayout from "../../../layout/PageLayout";
+import PageLayout from "../../../layout/PageLayout/PageLayout";
 import { PAGES_TITLE } from "../../../constants/page-title.constants";
 import { userSelectors } from "../../../store/user/user.selectors";
 import ContactInfo from "../../../components/feature/Contacts/Contact/ContactInfo";

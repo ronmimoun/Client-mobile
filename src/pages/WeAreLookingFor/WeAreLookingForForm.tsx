@@ -17,7 +17,7 @@ import { Select } from "../../components/ui/Select/Select";
 import { categoryManagerUtilService } from "../../utils/category-manager.utils";
 import { Input } from "../../components/form/Input/Input";
 import { PrimaryButton } from "../../components/ui/PrimaryButton/PrimaryButton";
-import PageLayout from "../../layout/PageLayout";
+import PageLayout from "../../layout/PageLayout/PageLayout";
 import { useNavigate, useParams } from "react-router-dom";
 import { ContactModel } from "../../types/contact/contact.type";
 import { contactApiService } from "../../services/http/api/contact.api.service";

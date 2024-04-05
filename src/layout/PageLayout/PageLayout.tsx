@@ -1,6 +1,6 @@
 import React from "react";
-import STYLES from "../constants/style.constants";
-import Breadcrumb, { BreadcrumbProps } from "../components/ui/Breadcrumb";
+import STYLES from "../../constants/style.constants";
+import Breadcrumb, { BreadcrumbProps } from "../../components/ui/Breadcrumb";
 
 type PageLayoutProps = {
   children: React.ReactNode;

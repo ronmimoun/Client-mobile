@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { CreditModel } from "../../types/credit/credit.type";
 import { creditApiService } from "../../services/http/api/credit.api.service";
 import Credit from "../../components/feature/Credit/Credit";
-import PageLayout from "../../layout/PageLayout";
+import PageLayout from "../../layout/PageLayout/PageLayout";
 import { PAGES_TITLE } from "../../constants/page-title.constants";
 
 export const Credits = () => {

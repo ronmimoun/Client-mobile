@@ -4,7 +4,7 @@ import { userSelectors } from "../../../store/user/user.selectors";
 import { PAGES_TITLE } from "../../../constants/page-title.constants";
 import { FavoriteIcon } from "../../../components/ui/Icons";
 import Contact from "../../../components/feature/Contacts/Contact/Contact";
-import PageLayout from "../../../layout/PageLayout";
+import PageLayout from "../../../layout/PageLayout/PageLayout";
 import { ROUTES } from "../../../constants/routes.constants";
 import { UserModel } from "../../../types/user.type";
 

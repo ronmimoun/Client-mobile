@@ -6,7 +6,7 @@ import { SelectedFilters } from "../../../types/contact/filters.type";
 import { userSelectors } from "../../../store/user/user.selectors";
 import { PAGES_TITLE } from "../../../constants/page-title.constants";
 import ContactList from "../../../components/feature/Contacts/ContactList/ContactList";
-import PageLayout from "../../../layout/PageLayout";
+import PageLayout from "../../../layout/PageLayout/PageLayout";
 
 type SearchType = {
   cat: string | CategoriesEnum;
