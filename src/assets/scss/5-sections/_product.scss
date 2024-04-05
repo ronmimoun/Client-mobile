@@ -383,30 +383,6 @@
 
 }
 
-/* shop product description */
-.product-content-description,
-.product-content-safety {
-  padding: 12px 60px;
-
-  h4 {
-    font-size: 14px;
-  }
-}
-
-/* shop product safety */
-
-.product-content-safety {
-  div {
-    color: $grey--twentyNine;
-    display: inline-block;
-    opacity: 0.7;
-
-    svg {
-      margin-right: 5px;
-    }
-  }
-}
-
 /* product-color-picker */
 
 .product-color-picker {

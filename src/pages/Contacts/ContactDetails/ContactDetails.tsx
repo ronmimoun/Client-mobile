@@ -1,9 +1,10 @@
+import classes from "./ContactDetails.module.scss";
+import PageLayout from "../../../layout/PageLayout";
 import { useSelector } from "react-redux";
 import { userSelectors } from "../../../store/user/user.selectors";
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FIXED_PRICE } from "../../../constants/values.constants";
-import { textUtilService } from "../../../utils/text.utils";
 import { DUMMY_USER_URL } from "../../../constants/image.constants";
 import { PAGES_TITLE } from "../../../constants/page-title.constants";
 import { AiOutlineLike } from "react-icons/ai";
@@ -11,15 +12,15 @@ import { ContactModel } from "../../../types/contact/contact.type";
 import { contactApiService } from "../../../services/http/api/contact.api.service";
 import { BreadcrumbProps } from "../../../components/ui/Breadcrumb";
 import { MdOutlineSecurity } from "react-icons/md";
-import { ScenariosPurchaseButton } from "./ScenariosPurchaseButton";
+import { ScenariosPurchaseButton } from "./ScenariosPurchaseButton/ScenariosPurchaseButton";
 import { ContactTransactionType } from "../../../enums/Contact/ContactTransactionType";
 import { ROUTES } from "../../../constants/routes.constants";
 import { feedbackApiService } from "../../../services/http/api/feedback.api.service";
-import { Mailto } from "../../../components/ui/MailTo/MailTo";
 import { NoInfoPlaceholder } from "../../../components/feature/NoInfoPlaceholder/NoInfoPlaceholder";
-import PageLayout from "../../../layout/PageLayout";
 import { ContactNotFoundIcon } from "../../../components/ui/Icons";
 import { UserModel } from "../../../types/user.type";
+import { ContactDetailsInfo } from "./ContactDetailsInfo/ContactDetailsInfo";
+import { combineClassNames } from "../../../utils/formatters.utils";
 
 export const ContactDetails = () => {
   const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
@@ -122,97 +123,26 @@ export const ContactDetails = () => {
 
       {/*====================  contact content ====================*/}
       <div className="product-content-header-area border-bottom space-pb--15">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <div className="product-content-header">
-                <div className="product-content-header__main-info">
-                  {isOwned && (
-                    <div className="flex gap--15">
-                      <h3 className="title">Country:</h3>
-                      {contact.country && (
-                        <p className="info">
-                          {textUtilService.getFirstLetterUppercase(
-                            contact.country
-                          )}
-                        </p>
-                      )}
-                    </div>
-                  )}
-
-                  {isOwned && (
-                    <div className="flex gap--15">
-                      <h3 className="title">Category:</h3>
-                      <p className="info">{contact.category}</p>
-                    </div>
-                  )}
-
-                  {isOwned && (
-                    <div className="flex gap--15">
-                      <h3 className="title">Company:</h3>
-                      <p className="info">{contact.company}</p>
-                    </div>
-                  )}
-
-                  {isOwned && (
-                    <div className="flex gap--15">
-                      <h3 className="title">Job Title:</h3>
-                      <p className="info">{contact.jobTitle}</p>
-                    </div>
-                  )}
-
-                  {contact.emails.length > 0 && (
-                    <div className="flex gap--15">
-                      <h3 className="title">Mail:</h3>
-                      <Mailto email={contact.emails[0]?.emailUrl}>
-                        {contact.emails[0]?.emailUrl}
-                      </Mailto>
-                    </div>
-                  )}
-
-                  <div className="flex gap--15">
-                    <h3 className="title">Mobile:</h3>
-                    <p className="info">{contact.mobile}</p>
-                  </div>
-
-                  {contact.linkedinLink && isOwned && (
-                    <div className="fold_text">
-                      <h3 className="title">Linkedin:</h3>
-                      <p className="info">{contact.linkedinLink}</p>
-                    </div>
-                  )}
-                </div>
-              </div>
-              <div className="product-price">
-                <span>{`$${contact.price.toFixed(FIXED_PRICE)}`}</span>
-              </div>
-            </div>
-          </div>
+        <ContactDetailsInfo isOwned={isOwned} contact={contact} />
+        <div className="product-price">
+          <span>{`$${contact.price.toFixed(FIXED_PRICE)}`}</span>
         </div>
       </div>
 
       {/* product content description */}
-      <div className="product-content-description border-bottom">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h4 className="space-mb--10">Info:</h4>
-              <p>{contact.desc}</p>
-            </div>
-          </div>
-        </div>
+      <div
+        className={combineClassNames([classes.description, "border-bottom"])}
+      >
+        <h4>Info:</h4>
+
+        <p>{contact.desc || "Currently no additional info to display"}</p>
       </div>
+
       {/* product content safety */}
-      <div className="product-content-safety">
-        <div className="container">
-          <div className="row">
-            <div className="col-12">
-              <h4>
-                <MdOutlineSecurity /> Secure Payment Method.
-              </h4>
-            </div>
-          </div>
-        </div>
+      <div className={classes.content_safety}>
+        <p className={classes.content_safety__text}>
+          <MdOutlineSecurity /> Secure Payment Method.
+        </p>
       </div>
 
       {/* shop product button */}
