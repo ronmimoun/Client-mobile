@@ -10,7 +10,7 @@ import { openAIChatApiService } from "../../services/http/api/chatGpt.api.servic
 import { FaRegPaperPlane } from "react-icons/fa";
 import { OpenAIMessageModel } from "../../types/open-ai-chat/openAIChat.type";
 import { ChatMessage, MessageTypeEnum } from "./ChatMessage/ChatMessage";
-import { RenderByBoolean } from "../../components/utils/RenderByBoolean/RenderByBoolean";
+import { RenderByBooleanWrapper } from "../../components/utils/RenderByBooleanWrapper/RenderByBooleanWrapper";
 import { Loader } from "../../components/ui/Preloader/Loader";
 import { useScrollToBottom } from "../../hooks/useScrollToBottom";
 import { useUpdateEffect } from "../../hooks/useEffectUpdate";
@@ -84,12 +84,12 @@ const AIChat = () => {
               autoComplete="off"
             />
             <PrimaryButton className={classes.form__button} type="submit">
-              <RenderByBoolean shouldRender={!isLoading}>
+              <RenderByBooleanWrapper shouldRender={!isLoading}>
                 <FaRegPaperPlane />
-              </RenderByBoolean>
-              <RenderByBoolean shouldRender={isLoading}>
+              </RenderByBooleanWrapper>
+              <RenderByBooleanWrapper shouldRender={isLoading}>
                 <Loader size={21} className={classes.form__loader} />
-              </RenderByBoolean>
+              </RenderByBooleanWrapper>
             </PrimaryButton>
           </form>
         </FormProvider>

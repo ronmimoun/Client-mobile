@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.857rem;
+
+    &__title {
+        font-size: 1.1rem;
+        font-weight: 600;
+    }
+
+    &__info {
+        font-weight: 400;
+    }
+}

@@ -1,20 +1,20 @@
 import { useSelector } from "react-redux";
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { ContactModel } from "../../../types/contact/contact.type";
-import { userSelectors } from "../../../store/user/user.selectors";
-import { useAppDispatch } from "../../../store";
-import { ROUTES } from "../../../constants/routes.constants";
-import { LoadingButton } from "../../../components/ui/LoadingButton/LoadingButton";
-import { userActions } from "../../../store/user/user.actions";
+import { ContactModel } from "../../../../types/contact/contact.type";
+import { userSelectors } from "../../../../store/user/user.selectors";
+import { useAppDispatch } from "../../../../store";
+import { ROUTES } from "../../../../constants/routes.constants";
+import { LoadingButton } from "../../../../components/ui/LoadingButton/LoadingButton";
+import { userActions } from "../../../../store/user/user.actions";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { GenericResponse } from "../../../utils/api.utils";
+import { GenericResponse } from "../../../../utils/api.utils";
 import { toast } from "react-toastify";
-import { POPUP_MESSAGE } from "../../../constants/popup.constants";
-import { cartActions } from "../../../store/cart/cart.actions";
-import { contactApiService } from "../../../services/http/api/contact.api.service";
-import { MESSAGES } from "../../../constants/messages.constants";
-import { UserModel } from "../../../types/user.type";
+import { POPUP_MESSAGE } from "../../../../constants/popup.constants";
+import { cartActions } from "../../../../store/cart/cart.actions";
+import { contactApiService } from "../../../../services/http/api/contact.api.service";
+import { MESSAGES } from "../../../../constants/messages.constants";
+import { UserModel } from "../../../../types/user.type";
 
 type ScenariosPurchaseButtonProps = {
   contact: ContactModel;

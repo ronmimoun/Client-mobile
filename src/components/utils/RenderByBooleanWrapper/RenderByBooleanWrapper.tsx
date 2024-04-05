@@ -1,13 +1,13 @@
 import { PropsWithChildren } from "react";
 
-type RenderByBooleanProps = {
+type RenderByBooleanWrapperProps = {
   shouldRender: boolean;
 } & PropsWithChildren;
 
-export const RenderByBoolean = ({
+export const RenderByBooleanWrapper = ({
   shouldRender,
   children,
-}: RenderByBooleanProps) => {
+}: RenderByBooleanWrapperProps) => {
   if (!shouldRender) return <></>;
   return <>{children}</>;
 };
