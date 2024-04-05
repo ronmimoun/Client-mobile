@@ -13,7 +13,7 @@ export const Home = () => {
             filters={{ recentAdded: 1 }}
             count={5}
           />
-          <UserContacts />
+          <UserContacts title="My Orders" />
         </div>
       </div>
     </>

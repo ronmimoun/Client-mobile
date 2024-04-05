@@ -8,15 +8,18 @@ type UserContactsProps = {
   title?: string;
 };
 
-const UserContacts = ({ title = "My Orders" }: UserContactsProps) => {
+const UserContacts = ({ title }: UserContactsProps) => {
   const currentUser = useSelector(userSelectors.currentUser());
   const mostRecentDate = userUtilService.getMostRecentObject(
     userUtilService.getContactPurchaseType(currentUser)
   )?.createdAt;
 
+  const userContactTransactions =
+    userUtilService.getContactPurchaseType(currentUser);
+
   return (
     <div className="contact-list--wrapper">
-      {title && (
+      {userContactTransactions.length > 0 && title && (
         <div className="contact-list__sub-header">
           <span>{title}</span>
           {mostRecentDate && (
@@ -27,11 +30,9 @@ const UserContacts = ({ title = "My Orders" }: UserContactsProps) => {
         </div>
       )}
 
-      {userUtilService
-        .getContactPurchaseType(currentUser)
-        .map((contactTransaction, idx) => {
-          return <Contact key={idx} contact={contactTransaction.contact} />;
-        })}
+      {userContactTransactions.map((contactTransaction, idx) => {
+        return <Contact key={idx} contact={contactTransaction.contact} />;
+      })}
     </div>
   );
 };

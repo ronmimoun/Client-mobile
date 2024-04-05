@@ -11,6 +11,7 @@ import { store } from "../../../utils/non-circular-injections.utils";
 import { getNotRequestedContactsResponse } from "../../../models/contact/getNotRequestedContacts/getNotRequestedContacts.response";
 import { sendContactDetailsEmailRequest } from "../../../models/contact/sendContactDetailsEmail/sendContactDetailsEmail.request";
 import { sendContactDetailsEmailResponse } from "../../../models/contact/sendContactDetailsEmail/sendContactDetailsEmail.response";
+import { ContactQueryRequest } from "../../../models/contact/Query/Query.request";
 
 const contactHttpInstance = createManagedAxiosInstance(
   buildGeneralApiInstanceConfig(getBaseURl())
@@ -68,7 +69,7 @@ async function queryByCategory(request: string) {
   return response;
 }
 
-async function getUserContactSales(request: string) {
+async function getUserContactSales(request: ContactQueryRequest) {
   const options: AxiosRequestConfig = {
     method: "post",
     url: `/contacts/user`,

@@ -38,6 +38,7 @@ export const REGISTER_FORM_CONFIG = {
       PLACEHOLDER: "Enter Password",
       LABEL: "Password",
       REQUIRED: true,
+      TYPE: "password",
     },
     CONFIRM_PASSWORD: {
       KEY: "confirmPassword",
@@ -45,6 +46,7 @@ export const REGISTER_FORM_CONFIG = {
       PLACEHOLDER: "Repeat Password",
       LABEL: "Confirm Password",
       REQUIRED: true,
+      TYPE: "password",
     },
     PHONE: {
       KEY: "phone",

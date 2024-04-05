@@ -1,4 +1,1 @@
-
-
-export type ContactQueryRequest = {}
-
+export type ContactQueryRequest = { userId: string };

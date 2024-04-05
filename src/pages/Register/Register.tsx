@@ -114,6 +114,7 @@ export const Register = () => {
                     label={REGISTER_FORM_CONFIG.INPUTS.PASSWORD.LABEL}
                     name={REGISTER_FORM_CONFIG.INPUTS.PASSWORD.KEY}
                     required={REGISTER_FORM_CONFIG.INPUTS.PASSWORD.REQUIRED}
+                    type={REGISTER_FORM_CONFIG.INPUTS.PASSWORD.TYPE}
                   />
                   <InputController
                     className="mb_1"
@@ -122,6 +123,7 @@ export const Register = () => {
                     required={
                       REGISTER_FORM_CONFIG.INPUTS.CONFIRM_PASSWORD.REQUIRED
                     }
+                    type={REGISTER_FORM_CONFIG.INPUTS.CONFIRM_PASSWORD.TYPE}
                   />
                   <InputController
                     className="mb_1"

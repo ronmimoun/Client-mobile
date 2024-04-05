@@ -73,6 +73,7 @@ export const Login = () => {
                     label={LOGIN_FORM_CONFIG.INPUTS.PASSWORD.LABEL}
                     name={LOGIN_FORM_CONFIG.INPUTS.PASSWORD.KEY}
                     required={LOGIN_FORM_CONFIG.INPUTS.PASSWORD.REQUIRED}
+                    type={LOGIN_FORM_CONFIG.INPUTS.PASSWORD.TYPE}
                   />
                   <div className="auth-form__single-field mb_1">
                     <p className="auth-form__info-text">

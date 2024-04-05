@@ -16,6 +16,7 @@ export const LOGIN_FORM_CONFIG = {
       PLACEHOLDER: "Enter Password",
       LABEL: "Password",
       REQUIRED: true,
+      TYPE: 'password',
     },
   },
 };

@@ -17,9 +17,11 @@ export const Income = () => {
 
   const getUserContactSale = async () => {
     if (!currentUser) return;
-    const saleResponse = await contactApiService.getUserContactSales(
-      currentUser._id
-    );
+
+    const saleResponse = await contactApiService.getUserContactSales({
+      userId: currentUser._id,
+    });
+
     if (!saleResponse.isSucceeded || !saleResponse.data?.content) return;
 
     setContactSales(saleResponse.data.content);
