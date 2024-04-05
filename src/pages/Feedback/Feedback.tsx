@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import PageLayout from "../../layout/PageLayout";
+import PageLayout from "../../layout/PageLayout/PageLayout";
 import { PAGES_TITLE } from "../../constants/page-title.constants";
 import { LoadingButton } from "../../components/ui/LoadingButton/LoadingButton";
 import { userSelectors } from "../../store/user/user.selectors";

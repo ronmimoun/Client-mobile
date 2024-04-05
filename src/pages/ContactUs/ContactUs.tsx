@@ -1,5 +1,5 @@
 import { PAGES_TITLE } from "../../constants/page-title.constants";
-import PageLayout from "../../layout/PageLayout";
+import PageLayout from "../../layout/PageLayout/PageLayout";
 
 export const ContactUs = () => {
   return (

@@ -3,16 +3,12 @@
 =============================================*/
 
 .breadcrumb-area {
-
   &__wrapper {
-    text-align: center;
     padding: 0 15px;
-    position: relative;
-  }
-
-  & span {
-    position: absolute;
-    left: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .page-title {
@@ -27,10 +23,9 @@
     cursor: pointer;
   }
 
-  & button {
-    position: absolute;
-    right: 0;
-    top: 0;
+  .icon_placeholder {
+    width: 2rem;
+    height: 2.286rem;
   }
 }
 

@@ -1,5 +1,5 @@
 import ContactList from "../../components/feature/Contacts/ContactList/ContactList";
-import PageLayout from "../../layout/PageLayout";
+import PageLayout from "../../layout/PageLayout/PageLayout";
 
 const AllContacts = () => {
   return (

@@ -1,5 +1,5 @@
 import STYLES from "../../../constants/style.constants";
-import PageLayout from "../../../layout/PageLayout";
+import PageLayout from "../../../layout/PageLayout/PageLayout";
 import { IconBaseType, IconProps } from "../../ui/Icons/icon-types";
 
 type NoInfoPlaceholderProps = {

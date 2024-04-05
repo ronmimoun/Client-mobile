@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { PAGES_TITLE } from "../../constants/page-title.constants";
 import { notifications } from "./mock";
-import PageLayout from "../../layout/PageLayout";
+import PageLayout from "../../layout/PageLayout/PageLayout";
 
 export const Notifications = () => {
   return (

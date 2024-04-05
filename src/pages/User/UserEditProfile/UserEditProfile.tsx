@@ -10,7 +10,7 @@ import {
   EditProfileForm,
 } from "../../../form/schemas/UserEditProfileSchema";
 import { countryApiService } from "../../../services/http/api/country.api.service";
-import PageLayout from "../../../layout/PageLayout";
+import PageLayout from "../../../layout/PageLayout/PageLayout";
 import { PAGES_TITLE } from "../../../constants/page-title.constants";
 import { useAppDispatch } from "../../../store";
 import { userActions } from "../../../store/user/user.actions";

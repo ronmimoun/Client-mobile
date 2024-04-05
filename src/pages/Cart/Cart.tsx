@@ -13,7 +13,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 import { cartActions } from "../../store/cart/cart.actions";
 import { ROUTES } from "../../constants/routes.constants";
 import ContactInfo from "../../components/feature/Contacts/Contact/ContactInfo";
-import PageLayout from "../../layout/PageLayout";
+import PageLayout from "../../layout/PageLayout/PageLayout";
 import { UserModel } from "../../types/user.type";
 
 export const Cart = () => {

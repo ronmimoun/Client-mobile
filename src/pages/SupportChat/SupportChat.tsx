@@ -17,7 +17,7 @@ import {
   SUPPORT_CHAT_FORM_SCHEMA,
   SupportChatForm,
 } from "../../form/schemas/SupportChatSchema";
-import PageLayout from "../../layout/PageLayout";
+import PageLayout from "../../layout/PageLayout/PageLayout";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader } from "../../components/ui/Preloader/Loader";
 import { UserModel } from "../../types/user.type";

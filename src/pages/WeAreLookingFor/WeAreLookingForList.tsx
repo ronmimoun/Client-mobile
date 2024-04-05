@@ -3,7 +3,7 @@ import { ContactModel } from "../../types/contact/contact.type";
 import { contactApiService } from "../../services/http/api/contact.api.service";
 import Contact from "../../components/feature/Contacts/Contact/Contact";
 import { ROUTES } from "../../constants/routes.constants";
-import PageLayout from "../../layout/PageLayout";
+import PageLayout from "../../layout/PageLayout/PageLayout";
 
 const WeAreLookingForList = () => {
   const [contactsNotInStock, setContactsNotInStock] = useState<ContactModel[]>(

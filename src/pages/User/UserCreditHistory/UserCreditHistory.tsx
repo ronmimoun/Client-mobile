@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { userSelectors } from "../../../store/user/user.selectors";
 import { timeUtilService } from "../../../utils/date.utils";
 import { PAGES_TITLE } from "../../../constants/page-title.constants";
-import PageLayout from "../../../layout/PageLayout";
+import PageLayout from "../../../layout/PageLayout/PageLayout";
 import { UserModel } from "../../../types/user.type";
 
 export const UserCreditsHistory = () => {
