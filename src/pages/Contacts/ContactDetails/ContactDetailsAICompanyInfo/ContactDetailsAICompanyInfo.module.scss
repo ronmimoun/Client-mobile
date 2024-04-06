@@ -1,0 +1,14 @@
+@import '/src/assets/scss/1-base/variables';
+
+.container {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid $grey--seven;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__loader {
+        position: relative !important;
+    }
+}

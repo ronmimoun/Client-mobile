@@ -21,6 +21,7 @@ import { ContactNotFoundIcon } from "../../../components/ui/Icons";
 import { UserModel } from "../../../types/user.type";
 import { ContactDetailsInfo } from "./ContactDetailsInfo/ContactDetailsInfo";
 import { combineClassNames } from "../../../utils/formatters.utils";
+import { ContactDetailsAICompanyInfo } from "./ContactDetailsAICompanyInfo/ContactDetailsAICompanyInfo";
 
 export const ContactDetails = () => {
   const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
@@ -134,7 +135,6 @@ export const ContactDetails = () => {
         className={combineClassNames([classes.description, "border-bottom"])}
       >
         <h4>Info:</h4>
-
         <p>{contact.desc || "Currently no additional info to display"}</p>
       </div>
 
@@ -152,6 +152,8 @@ export const ContactDetails = () => {
         isFavorite={isFavorite}
         setIsFavorite={setIsFavorite}
       />
+
+      <ContactDetailsAICompanyInfo contact={contact} />
     </PageLayout>
   );
 };
