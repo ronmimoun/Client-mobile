@@ -3,6 +3,7 @@ import { RenderByBooleanWrapper } from "../../../../components/utils/RenderByBoo
 import { ContactModel } from "../../../../types/contact/contact.type";
 import { textUtilService } from "../../../../utils/text.utils";
 import { Mailto } from "../../../../components/ui/MailTo/MailTo";
+import { ContactNameRevealButton } from "./ContactNameRevealButton/ContactNameRevealButton";
 
 type ContactDetailsInfoProps = {
   contact: ContactModel;
@@ -15,6 +16,8 @@ export const ContactDetailsInfo = ({
 }: ContactDetailsInfoProps) => {
   return (
     <div className={classes.container}>
+      <ContactNameRevealButton contact={contact} />
+
       <RenderByBooleanWrapper shouldRender={isOwned}>
         <div className="flex gap--15">
           <h3 className={classes.container__title}>Country:</h3>
