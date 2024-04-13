@@ -16,7 +16,7 @@ export const ContactDetailsInfo = ({
 }: ContactDetailsInfoProps) => {
   return (
     <div className={classes.container}>
-      <ContactNameRevealButton contact={contact} />
+      <ContactNameRevealButton contact={contact} isOwned={isOwned} />
 
       <RenderByBooleanWrapper shouldRender={isOwned}>
         <div className="flex gap--15">

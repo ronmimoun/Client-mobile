@@ -14,10 +14,12 @@ import { userActions } from "../../../../../store/user/user.actions";
 
 type ContactNameRevealButtonProps = {
   contact: ContactModel;
+  isOwned: boolean;
 };
 
 export const ContactNameRevealButton = ({
   contact,
+  isOwned,
 }: ContactNameRevealButtonProps) => {
   const currentUser = useSelector(userSelectors.currentUser());
   const dispatch = useAppDispatch();
@@ -44,6 +46,8 @@ export const ContactNameRevealButton = ({
   }, [currentUser]);
 
   const isNameRevealed = useMemo((): boolean => {
+    if (isOwned) return true;
+
     return !!currentUser?.contactDisclosure.contactsRevealed.find(
       (revealedContact) => revealedContact._id === contact._id
     );
