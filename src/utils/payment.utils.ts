@@ -1,10 +1,10 @@
+import store from "../store";
 import { ContactTransactionType } from "../enums/Contact/ContactTransactionType";
 import { CreditPurchaseEnum } from "../enums/CreditTransaction/creditTransaction.enum";
 import { ContactTransaction } from "../models/contactTransaction/contactTransaction";
 import { CreditTransaction } from "../models/creditTransaction/creditTransaction.model";
 import { paymentApiService } from "../services/payment/payment.api.service";
-import store from "../store";
-import { ContactModel } from "../types/contact/contact.type";
+import { PresentativeContactType } from "../types/contact/contact.type";
 import { CreditModel } from "../types/credit/credit.type";
 
 function createCreditPaymentRequest(requestPayload: {
@@ -20,7 +20,9 @@ function createCreditPaymentRequest(requestPayload: {
   return [trans];
 }
 
-async function createContactPaymentRequest(contacts: ContactModel[]) {
+async function createContactPaymentRequest(
+  contacts: PresentativeContactType[]
+) {
   const user = store.getState().user.currentUser;
 
   if (!user) return;

@@ -19,8 +19,7 @@ import { useInitialContactDetails } from "../../../hooks/useInitialContactDetail
 
 export const ContactDetails = () => {
   const navigate = useNavigate();
-  const { contact, isFavorite, isGotFeedback, isOwned, addContactAsFavorite } =
-    useInitialContactDetails();
+  const { contact, isGotFeedback, isOwned } = useInitialContactDetails();
 
   const breadCrumbProps = useMemo((): BreadcrumbProps => {
     return {
@@ -76,12 +75,7 @@ export const ContactDetails = () => {
       </div>
 
       {/* shop product button */}
-      <ScenariosPurchaseButton
-        contact={contact}
-        isOwned={isOwned}
-        isFavorite={isFavorite}
-        setIsFavorite={addContactAsFavorite}
-      />
+      <ScenariosPurchaseButton contact={contact} />
 
       <ContactDetailsAICompanyInfo contact={contact} />
     </PageLayout>

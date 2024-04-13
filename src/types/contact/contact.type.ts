@@ -41,7 +41,7 @@ type TransactionHistory = {
   type: string;
 };
 
-export type PresentativeContact = Pick<
+export type PresentativeContactType = Pick<
   ContactModel,
   "_id" | "category" | "company" | "jobTitle" | "img" | "price"
 >;

@@ -1,11 +1,11 @@
 import { AgentMessageModel } from "./agent-message/agentMessage.type";
-import { ContactModel, PresentativeContact } from "./contact/contact.type";
+import { PresentativeContactType } from "./contact/contact.type";
 import { CountryModel } from "./country/CountryModel";
 
 // ****** API ******
 export type UpdateUserContactDisclosureRequest = {
   revealCount: number;
-  contactRevealed: PresentativeContact;
+  contactRevealed: PresentativeContactType;
 };
 
 export type UpdateUserContactDisclosureResponse = {} & UserModel;
@@ -26,7 +26,7 @@ export type UserModel = {
   isActive: boolean;
   gender: string;
   permissions: Array<string>;
-  favorites: Array<ContactModel>;
+  favorites: Array<PresentativeContactType>;
   credits: number;
   creditTransactions: Array<any>;
   contactTransactions: Array<any>;
@@ -48,6 +48,6 @@ type ImgUrl = {
 
 export type ContactDisclosure = {
   revealCount: number;
-  contactsRevealed: PresentativeContact[];
+  contactsRevealed: PresentativeContactType[];
   nextRevealCountReset: Date;
 };

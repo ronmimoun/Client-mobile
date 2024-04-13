@@ -7,6 +7,7 @@ import {
   refundContactThunkBuilder,
   contactRefundThunk,
 } from "./cart-thunks/contactRefundThunkBuilder";
+import { CartState } from "./cart-state";
 
 export const cartThunkActionBuilder = (
   builder: ActionReducerMapBuilder<CartState>

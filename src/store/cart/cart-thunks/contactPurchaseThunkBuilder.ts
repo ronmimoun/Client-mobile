@@ -1,5 +1,5 @@
 import { createAsyncThunk, ActionReducerMapBuilder } from "@reduxjs/toolkit";
-import { ContactModel } from "../../../types/contact/contact.type";
+import { PresentativeContactType } from "../../../types/contact/contact.type";
 import { RootState } from "../../root.reducers";
 import { userUtilService } from "../../../utils/user.utils";
 import { toast } from "react-toastify";
@@ -8,10 +8,11 @@ import { paymentUtilService } from "../../../utils/payment.utils";
 import { userActions } from "../../user/user.actions";
 import { buildResponse } from "../../../utils/api.utils";
 import { UserModel } from "../../../types/user.type";
+import { CartState } from "../cart-state";
 
 export const contactPurchase = createAsyncThunk(
   "cart/contactPurchase",
-  async (requestPayload: ContactModel[], thunkApi) => {
+  async (requestPayload: PresentativeContactType[], thunkApi) => {
     const user = (thunkApi.getState() as RootState).user
       .currentUser as UserModel;
 

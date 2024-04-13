@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { MdHistory } from "react-icons/md";
 import { BiChat } from "react-icons/bi";
+import { MdOutlineContactSupport } from "react-icons/md";
 import { userSelectors } from "../../../store/user/user.selectors";
 import { elementUtilService } from "../../../utils/element.utils";
 import { DUMMY_USER_URL } from "../../../constants/image.constants";
@@ -124,6 +125,18 @@ const OffcanvasModal = ({
               </span>
               <Link to={ROUTES.USER_CREDIT_HISTORY_PAGE.FULL_ROUTE_NAME}>
                 Credit History
+              </Link>
+            </div>
+            <ArrowIcon className="offcanvas-menu__icon rotate_180" />
+          </li>
+
+          <li className="flex justify-space">
+            <div className="flex align-center">
+              <span className="__icon">
+                <MdOutlineContactSupport />
+              </span>
+              <Link to={ROUTES.REVEALED_CONTACTS_PAGE.FULL_ROUTE_NAME}>
+                Revealed Contacts
               </Link>
             </div>
             <ArrowIcon className="offcanvas-menu__icon rotate_180" />

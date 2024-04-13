@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction, Reducer } from "@reduxjs/toolkit";
-import { ContactModel } from "../../types/contact/contact.type";
+import { PresentativeContactType } from "../../types/contact/contact.type";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../constants/popup.constants";
 import { cartThunkActionBuilder } from "./cart.thunk-builder";
+import { CartState } from "./cart-state";
 
 const initialState: CartState = {
   cart: [],
@@ -12,7 +13,7 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<ContactModel>) => {
+    addToCart: (state, action: PayloadAction<PresentativeContactType>) => {
       const contact = state.cart.find(
         (item) => item._id === action.payload._id
       );

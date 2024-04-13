@@ -20,5 +20,7 @@ export const IconDefaultProps: IconProps = {
 };
 
 export type IconBaseType = {
-  icon: ({ size, className }: IconProps) => JSX.Element;
+  icon: IconType;
 };
+
+export type IconType = ({ size, className }: IconProps) => JSX.Element;

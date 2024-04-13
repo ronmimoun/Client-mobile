@@ -4,6 +4,7 @@ import { buildResponse } from "../../../utils/api.utils";
 import { userActions } from "../../user/user.actions";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../../constants/popup.constants";
+import { CartState } from "../cart-state";
 
 type ContactRefundThunkProps = {
   transactionId: string;

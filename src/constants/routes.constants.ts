@@ -169,4 +169,9 @@ export namespace ROUTES {
     export const ROUTE_NAME = "ai-chat";
     export const FULL_ROUTE_NAME = `${BASE}${ROUTE_NAME}`;
   }
+
+  export namespace REVEALED_CONTACTS_PAGE {
+    export const ROUTE_NAME = "revealed-contacts";
+    export const FULL_ROUTE_NAME = `${BASE}${ROUTE_NAME}`;
+  }
 }

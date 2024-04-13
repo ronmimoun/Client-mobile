@@ -6,7 +6,7 @@ type NoInfoPlaceholderProps = {
   title: string;
   subTitle?: string;
   iconProps?: IconProps;
-} & IconBaseType;
+} & Partial<IconBaseType>;
 
 export const NoInfoPlaceholder = ({
   icon,

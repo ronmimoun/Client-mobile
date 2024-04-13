@@ -63,4 +63,8 @@ export namespace PAGES_TITLE {
   export namespace AI_CHAT_PAGE {
     export const TITLE_NAME = "AI Chat";
   }
+
+  export namespace REVEALED_CONTACTS {
+    export const TITLE_NAME = "Revealed Contacts";
+  }
 }

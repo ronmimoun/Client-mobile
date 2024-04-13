@@ -1,10 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { DUMMY_USER_URL } from "../../../../constants/image.constants";
 import { ROUTES } from "../../../../constants/routes.constants";
-import { ContactModel } from "../../../../types/contact/contact.type";
+import { PresentativeContactType } from "../../../../types/contact/contact.type";
 
 type ContactInfoProps = {
-  contact: ContactModel;
+  contact: PresentativeContactType;
   url?: string;
 };
 

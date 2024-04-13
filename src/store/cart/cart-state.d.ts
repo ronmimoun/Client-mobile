@@ -1,3 +1,5 @@
+import { PresentativeContactType } from "../../types/contact/contact.type";
+
 type CartState = {
-  cart: ContactModel[];
+  cart: PresentativeContactType[];
 };

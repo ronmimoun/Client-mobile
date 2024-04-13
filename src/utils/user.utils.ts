@@ -4,7 +4,7 @@ import {
 } from "../constants/storage.constatns";
 import { CREDIT_VALUE } from "../constants/values.constants";
 import { ContactTransactionType } from "../enums/Contact/ContactTransactionType";
-import { ContactModel } from "../types/contact/contact.type";
+import { PresentativeContactType } from "../types/contact/contact.type";
 import { CountryModel } from "../types/country/CountryModel";
 import { UserModel } from "../types/user.type";
 
@@ -58,7 +58,10 @@ function clearLocalUser() {
   sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER);
 }
 
-function calculateUserCredits(cart: ContactModel[], user: UserModel) {
+function calculateUserCredits(
+  cart: PresentativeContactType[],
+  user: UserModel
+) {
   const sum = cart.reduce((acc, contact) => (acc += contact.price), 0);
   if (user.credits >= sum / CREDIT_VALUE) return true;
   else return false;

@@ -1,11 +1,11 @@
 import {
   ContactModel,
-  PresentativeContact,
+  PresentativeContactType,
 } from "../types/contact/contact.type";
 
 export const createPresentativeContact = (
   contact: ContactModel
-): PresentativeContact => {
+): PresentativeContactType => {
   return {
     _id: contact._id,
     category: contact.category,
