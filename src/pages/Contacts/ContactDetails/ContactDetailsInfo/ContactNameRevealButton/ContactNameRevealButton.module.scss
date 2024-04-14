@@ -20,7 +20,6 @@
     &__button {
         display: flex;
         height: 1rem;
-        font-size: 1.3rem;
         color: $purple--one;
         align-items: center;
         gap: 0.3rem;
@@ -35,6 +34,10 @@
 
     &__counter {
         margin: 0 !important;
-        font-size: 1rem;
+        font-size: 1.3rem;
+    }
+
+    &__icon {
+        font-size: 1.3rem;
     }
 }

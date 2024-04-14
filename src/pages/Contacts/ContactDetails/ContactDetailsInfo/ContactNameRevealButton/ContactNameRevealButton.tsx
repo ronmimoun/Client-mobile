@@ -73,7 +73,7 @@ export const ContactNameRevealButton = ({
             <p className={classes.container__counter}>
               {currentUser?.contactDisclosure.revealCount}
             </p>
-            <BsEyeFill />
+            <BsEyeFill className={classes.container__icon} />
           </ButtonIconBase>
         </RenderByBooleanWrapper>
       </div>

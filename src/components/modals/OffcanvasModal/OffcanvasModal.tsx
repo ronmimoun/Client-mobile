@@ -136,7 +136,7 @@ const OffcanvasModal = ({
                 <MdOutlineContactSupport />
               </span>
               <Link to={ROUTES.REVEALED_CONTACTS_PAGE.FULL_ROUTE_NAME}>
-                Revealed Contacts
+                Viewed contacts names
               </Link>
             </div>
             <ArrowIcon className="offcanvas-menu__icon rotate_180" />
