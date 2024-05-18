@@ -16,7 +16,7 @@ const sendMessage = async (
 ): Promise<ApiResponse<OpenAISendMessageResponse>> => {
   const options: AxiosRequestConfig = {
     method: "post",
-    url: "/openai/send",
+    url: "/llm/send",
     data: { message },
     loaderOptions: { ignore: true },
   };
@@ -27,6 +27,6 @@ const sendMessage = async (
   return response;
 };
 
-export const openAIChatApiService = {
+export const llmApiService = {
   sendMessage,
 };

@@ -1,6 +1,6 @@
 import classes from "./ContactDetailsAICompanyInfo.module.scss";
 import { useCallback, useEffect, useState } from "react";
-import { openAIChatApiService } from "../../../../services/http/api/chatGpt.api.service";
+import { llmApiService } from "../../../../services/http/api/llm.api.service";
 import { RenderByBooleanWrapper } from "../../../../components/utils/RenderByBooleanWrapper/RenderByBooleanWrapper";
 import { Loader } from "../../../../components/ui/Preloader/Loader";
 import { ContactModel } from "../../../../types/contact/contact.type";
@@ -25,7 +25,7 @@ export const ContactDetailsAICompanyInfo = ({
 
   const getCompanyInfo = useCallback(async (message: string) => {
     setIsLoading(true);
-    const response = await openAIChatApiService.sendMessage(message);
+    const response = await llmApiService.sendMessage(message);
     setIsLoading(false);
 
     if (!response.isSucceeded || !response.data?.content) return;

@@ -16,6 +16,8 @@ import { ContactDetailsInfo } from "./ContactDetailsInfo/ContactDetailsInfo";
 import { combineClassNames } from "../../../utils/formatters.utils";
 import { ContactDetailsAICompanyInfo } from "./ContactDetailsAICompanyInfo/ContactDetailsAICompanyInfo";
 import { useInitialContactDetails } from "../../../hooks/useInitialContactDetails";
+import { ContactLLMInfoSearch } from "./ContactLLMInfoSearch/ContactLLMInfoSearch";
+import { RenderByBooleanWrapper } from "../../../components/utils/RenderByBooleanWrapper/RenderByBooleanWrapper";
 
 export const ContactDetails = () => {
   const navigate = useNavigate();
@@ -76,8 +78,15 @@ export const ContactDetails = () => {
 
       {/* shop product button */}
       <ScenariosPurchaseButton contact={contact} />
-
       <ContactDetailsAICompanyInfo contact={contact} />
+
+      <RenderByBooleanWrapper
+        shouldRender={!!contact.llmInformation?.submittedInfoSearch && isOwned}
+      >
+        <ContactLLMInfoSearch
+          llmInfoText={contact.llmInformation.submittedInfoSearch!}
+        />
+      </RenderByBooleanWrapper>
     </PageLayout>
   );
 };

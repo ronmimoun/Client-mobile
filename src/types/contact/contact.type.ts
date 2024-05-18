@@ -21,6 +21,7 @@ export type ContactModel = {
   averageRating: number;
   numberOfRatings: number;
   _id: string;
+  llmInformation: LLMInformationModel;
 };
 
 type Email = {
@@ -45,3 +46,8 @@ export type PresentativeContactType = Pick<
   ContactModel,
   "_id" | "category" | "company" | "jobTitle" | "img" | "price"
 >;
+
+export type LLMInformationModel = {
+  submittedInfoSearch?: string | null;
+  lastGeneratedInfoSearch?: string | null;
+};
