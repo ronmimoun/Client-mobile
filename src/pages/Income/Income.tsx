@@ -5,11 +5,11 @@ import { useCallback, useEffect } from "react";
 import { useState } from "react";
 import { userSelectors } from "../../store/user/user.selectors";
 import { contactApiService } from "../../services/http/api/contact.api.service";
-import { ContactModel } from "../../types/contact/contact.type";
 import { ShareIcon } from "../../components/ui/Icons";
 import { IconType } from "react-icons";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../constants/routes.constants";
+import { ContactModel } from "../../types/entities/contact/contact.type";
 
 export const Income = () => {
   const currentUser = useSelector(userSelectors.currentUser());
@@ -23,7 +23,7 @@ export const Income = () => {
   const getUserContactSale = async () => {
     if (!currentUser) return;
 
-    const saleResponse = await contactApiService.getUserContactSales({
+    const saleResponse = await contactApiService.getUserSoldContacts({
       userId: currentUser._id,
     });
 

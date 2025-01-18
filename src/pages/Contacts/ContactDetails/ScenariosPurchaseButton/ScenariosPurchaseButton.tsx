@@ -3,7 +3,7 @@ import { InStockAndOwnerContactButton } from "./InStockAndOwnerContactButton/InS
 import { NotOwnedInFavoritesContactButton } from "./NotOwnedInFavoritesContactButton/NotOwnedInFavoritesContactButton";
 import { NotOwnerAndNotFavoriteContactButton } from "./NotOwnedAndNotFavoriteContactButton/NotOwnerAndNotFavoriteContactButton";
 import { OwnedAndNotInStockContactButton } from "./OwnedAndNotInStockContactButton/OwnedAndNotInStockContactButton";
-import { ContactModel } from "../../../../types/contact/contact.type";
+import { ContactModel } from "../../../../types/entities/contact/contact.type";
 
 type ScenariosPurchaseButtonProps = {
   contact: ContactModel;

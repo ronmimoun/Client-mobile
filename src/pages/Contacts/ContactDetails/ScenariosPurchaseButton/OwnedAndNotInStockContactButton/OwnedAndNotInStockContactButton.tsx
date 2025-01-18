@@ -1,13 +1,13 @@
-import { ContactModel } from "../../../../../types/contact/contact.type";
 import { useAppDispatch } from "../../../../../store";
 import { useSelector } from "react-redux";
 import { userSelectors } from "../../../../../store/user/user.selectors";
-import { UserModel } from "../../../../../types/user.type";
+import { UserModel } from "../../../../../types/entities/user.type";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../../../../constants/popup.constants";
 import { cartActions } from "../../../../../store/cart/cart.actions";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../../../constants/routes.constants";
+import { ContactModel } from "../../../../../types/entities/contact/contact.type";
 
 type OwnedAndNotInStockContactButtonProps = {
   contact: ContactModel;

@@ -7,11 +7,9 @@ import { useScrollToBottom } from "../../hooks/useScrollToBottom";
 import { useUpdateEffect } from "../../hooks/useEffectUpdate";
 import { supportChatApiService } from "../../services/http/api/supportChat.api.service";
 import { PAGES_TITLE } from "../../constants/page-title.constants";
-import { RoomChatModel } from "../../types/support-chat/roomChat.type";
-import { timeUtilService } from "../../utils/date.utils";
+import { SupportChatModel } from "../../types/entities/support-chat/roomChat.type";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../constants/popup.constants";
-import { DUMMY_USER_URL } from "../../constants/image.constants";
 import {
   SUPPORT_CHAT_FORM_CONFIG,
   SUPPORT_CHAT_FORM_SCHEMA,
@@ -20,11 +18,11 @@ import {
 import PageLayout from "../../layout/PageLayout/PageLayout";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader } from "../../components/ui/Preloader/Loader";
-import { UserModel } from "../../types/user.type";
+import { SupportChatMessages } from "./SupportChatMessages/SupportChatMessages";
 
 export const SupportChat = () => {
-  const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
-  const [room, setRoom] = useState<RoomChatModel | null>(null);
+  const currentUserId = useSelector(userSelectors.currentUserId);
+  const [supportChat, setSupportChat] = useState<SupportChatModel | null>(null);
   const formMethods = useForm<SupportChatForm>({
     defaultValues: {
       [SUPPORT_CHAT_FORM_CONFIG.INPUTS.MESSAGE.KEY]:
@@ -43,11 +41,11 @@ export const SupportChat = () => {
   useUpdateEffect(() => {
     handleScrollToBottom();
     formMethods.setFocus(SUPPORT_CHAT_FORM_CONFIG.INPUTS.MESSAGE.KEY);
-  }, [room]);
+  }, [supportChat]);
 
   const loadSupportChat = useCallback(async () => {
     const currentUserChatSupport = await supportChatApiService.getById(
-      currentUser._id
+      currentUserId!
     );
 
     if (
@@ -56,33 +54,32 @@ export const SupportChat = () => {
     )
       return toast.error(POPUP_MESSAGE.SUPPORT_CHAT.AN_PROBLEM_OCCURRED);
 
-    setRoom(currentUserChatSupport.data.content);
-  }, []);
+    setSupportChat(currentUserChatSupport.data.content);
+  }, [currentUserId]);
 
   const onSubmit = useCallback(
     async ({ message }: SupportChatForm) => {
-      if (!room) return;
+      if (!supportChat) return;
       setIsLoading(true);
 
-      const request = {
-        userId: currentUser._id,
-        message,
+      const messageResponse = await supportChatApiService.sendMessage({
+        chatId: supportChat._id,
         isUserSender: true,
-      };
-
-      const messageResponse = await supportChatApiService.create(request);
+        message,
+        userId: currentUserId!,
+      });
       setIsLoading(false);
 
       if (!messageResponse.isSucceeded || !messageResponse.data?.content)
         return toast.error(POPUP_MESSAGE.SUPPORT_CHAT.AN_PROBLEM_OCCURRED);
 
-      setRoom({
-        ...room,
-        messages: [...room.messages, messageResponse.data.content],
+      setSupportChat({
+        ...supportChat,
+        messages: [...supportChat.messages, messageResponse.data.content],
       });
       formMethods.reset();
     },
-    [room]
+    [supportChat, currentUserId]
   );
 
   return (
@@ -91,42 +88,7 @@ export const SupportChat = () => {
         <div className="container">
           <div className="row">
             <div className="col-12">
-              <div className="chat-wrap">
-                {room && (
-                  <ul className="chat-list">
-                    {room.messages.map((message, idx) => {
-                      return (
-                        <li key={idx}>
-                          <div
-                            className={`chat${
-                              message.isUserSender ? "" : " other-message"
-                            }`}
-                          >
-                            <div className="body">
-                              <div className="image">
-                                <img src={DUMMY_USER_URL} alt="" />
-                              </div>
-                              <div className="content">
-                                <div className="head">
-                                  <h5>
-                                    {message.isUserSender ? "Me" : "Admin"}
-                                  </h5>
-                                  <span>
-                                    {timeUtilService.formatTimestamp(
-                                      new Date(message.createdAt)
-                                    )}
-                                  </span>
-                                </div>
-                                <p>{message.content}</p>
-                              </div>
-                            </div>
-                          </div>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                )}
-              </div>
+              <SupportChatMessages supportChat={supportChat} />
             </div>
           </div>
         </div>

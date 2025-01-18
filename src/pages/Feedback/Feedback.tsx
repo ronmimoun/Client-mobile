@@ -8,7 +8,7 @@ import { LoadingButton } from "../../components/ui/LoadingButton/LoadingButton";
 import { userSelectors } from "../../store/user/user.selectors";
 import { Star } from "../../components/ui/Star/Star";
 import { feedbackApiService } from "../../services/http/api/feedback.api.service";
-import { FeedbackModel } from "../../types/feedback/feedback.type";
+import { FeedbackModel } from "../../types/entities/feedback/feedback.type";
 import {
   FEEDBACK_FORM_CONFIG,
   FeedbackForm,
@@ -16,7 +16,7 @@ import {
 import { CreateFeedbackRequest } from "../../models/feedback/create/createFeedback.request";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../constants/popup.constants";
-import { UserModel } from "../../types/user.type";
+import { UserModel } from "../../types/entities/user.type";
 
 export const Feedback = () => {
   const currentUser = useSelector(userSelectors.currentUser()) as UserModel;

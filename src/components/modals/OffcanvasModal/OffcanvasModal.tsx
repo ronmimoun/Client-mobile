@@ -25,7 +25,7 @@ import {
 import { IoIosContact } from "react-icons/io";
 import { MdOutlineJoinInner } from "react-icons/md";
 import { userUtilService } from "../../../utils/user.utils";
-import { UserModel } from "../../../types/user.type";
+import { UserModel } from "../../../types/entities/user.type";
 
 type OffcanvasModalProps = {
   activeStatus: (status: boolean) => void;

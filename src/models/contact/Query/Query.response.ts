@@ -1,4 +1,3 @@
-import { ContactModel } from "../../../types/contact/contact.type";
+import { ContactModel } from "../../../types/entities/contact/contact.type";
 
-export type ContactQueryResponse = {} & ContactModel[]
-
+export type ContactQueryResponse = {} & ContactModel[];

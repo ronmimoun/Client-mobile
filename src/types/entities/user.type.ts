@@ -51,3 +51,9 @@ export type ContactDisclosure = {
   contactsRevealed: PresentativeContactType[];
   nextRevealCountReset: Date;
 };
+
+export type UserInfo = {
+  fullname?: string;
+  userId?: string;
+  imgUrl?: ImgUrl;
+};

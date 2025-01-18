@@ -1,3 +1,4 @@
-export enum CreditPurchaseEnum {
-    CreditPurchase = 'credit_purchase'
+export enum CreditTransactionTypeEnum {
+  CreditPurchase = "credit_purchase",
+  Credit_Sale = "credit_sale",
 }

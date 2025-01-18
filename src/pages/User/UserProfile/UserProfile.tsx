@@ -5,7 +5,7 @@ import { DUMMY_USER_URL } from "../../../constants/image.constants";
 import { ROUTES } from "../../../constants/routes.constants";
 import { FaEdit } from "react-icons/fa";
 import { userUtilService } from "../../../utils/user.utils";
-import { UserModel } from "../../../types/user.type";
+import { UserModel } from "../../../types/entities/user.type";
 
 export const UserProfile = () => {
   const currentUser = useSelector(userSelectors.currentUser()) as UserModel;

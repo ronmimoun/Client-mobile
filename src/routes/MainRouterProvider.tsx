@@ -15,7 +15,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 // Pages:
 import { FavoriteContacts } from "../pages/Contacts/FavoriteContacts/FavoriteContacts";
-import { RecommandedContacts } from "../pages/Contacts/RecommandedContacts/RecommandedContacts";
 import { Income } from "../pages/Income/Income";
 import { MyOrders } from "../pages/MyOrders/MyOrders";
 import { ContactsByCategoryPage } from "../pages/Contacts/ContactsByCategoryPage/ContactsByCategoryPage";
@@ -40,9 +39,10 @@ import { Login } from "../pages/Login/Login";
 import { Credits } from "../pages/Credit/Credits";
 import AllContacts from "../pages/AllContacts/AllContacts";
 import WeAreLookingForList from "../pages/WeAreLookingFor/WeAreLookingForList";
-import WeAreLookingForForm from "../pages/WeAreLookingFor/WeAreLookingForForm";
+import WeAreLookingForPage from "../pages/WeAreLookingFor/WeAreLookingForPage";
 import AIChat from "../pages/AIChat/AIChat";
 import { RevealedContacts } from "../pages/RevealedContacts/RevealedContacts";
+import { RecommendedContacts } from "../pages/Contacts/RecommandedContacts/RecommandedContacts";
 
 const RoutesWrapper = () => {
   const currentUser = useSelector(userSelectors.currentUser());
@@ -86,7 +86,7 @@ const mainRouter = createBrowserRouter(
         />
         <Route
           path={ROUTES.CONTACTS_RECOMMANDED_PAGE.FULL_ROUTE_NAME}
-          element={<RecommandedContacts />}
+          element={<RecommendedContacts />}
         />
         <Route
           path={ROUTES.FAVORITES_CONTACTS_PAGE.FULL_ROUTE_NAME}
@@ -158,7 +158,7 @@ const mainRouter = createBrowserRouter(
         />
         <Route
           path={ROUTES.WE_ARE_LOOKING_FOR_PAGE.PATH_NAME}
-          element={<WeAreLookingForForm />}
+          element={<WeAreLookingForPage />}
         />
         <Route path={ROUTES.FEEDBACK_PAGE.PATH_NAME} element={<Feedback />} />
 

@@ -1,10 +1,10 @@
 import { useCallback } from "react";
-import { ContactModel } from "../../../../../types/contact/contact.type";
 import { contactApiService } from "../../../../../services/http/api/contact.api.service";
 import { MESSAGES } from "../../../../../constants/messages.constants";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { ROUTES } from "../../../../../constants/routes.constants";
+import { ContactModel } from "../../../../../types/entities/contact/contact.type";
 
 type InStockAndOwnerContactButtonProps = {
   contact: ContactModel;

@@ -5,12 +5,12 @@ import { ButtonIconBase } from "../../../../../components/ui/buttons/ButtonIconB
 import { RenderByBooleanWrapper } from "../../../../../components/utils/RenderByBooleanWrapper/RenderByBooleanWrapper";
 import { useCallback, useMemo } from "react";
 import { userApiService } from "../../../../../services/http/api/user.api.service";
-import { ContactModel } from "../../../../../types/contact/contact.type";
 import { createPresentativeContact } from "../../../../../utils/contact.utils";
 import { useSelector } from "react-redux";
 import { userSelectors } from "../../../../../store/user/user.selectors";
 import { useAppDispatch } from "../../../../../store";
 import { userActions } from "../../../../../store/user/user.actions";
+import { ContactModel } from "../../../../../types/entities/contact/contact.type";
 
 type ContactNameRevealButtonProps = {
   contact: ContactModel;

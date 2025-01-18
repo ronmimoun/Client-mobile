@@ -1,14 +1,13 @@
 import { createAsyncThunk, ActionReducerMapBuilder } from "@reduxjs/toolkit";
-import { PresentativeContactType } from "../../../types/contact/contact.type";
 import { RootState } from "../../root.reducers";
 import { userUtilService } from "../../../utils/user.utils";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../../constants/popup.constants";
-import { paymentUtilService } from "../../../utils/payment.utils";
 import { userActions } from "../../user/user.actions";
 import { buildResponse } from "../../../utils/api.utils";
-import { UserModel } from "../../../types/user.type";
+import { UserModel } from "../../../types/entities/user.type";
 import { CartState } from "../cart-state";
+import { PresentativeContactType } from "../../../types/entities/contact/contact.type";
 
 export const contactPurchase = createAsyncThunk(
   "cart/contactPurchase",

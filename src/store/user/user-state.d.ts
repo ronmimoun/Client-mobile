@@ -1,6 +1,6 @@
 import { UserAuthResponse } from "../../models/auth/Login/Login.response";
-import { CountryModel } from "../../types/country/CountryModel";
-import { UserModel } from "../../types/user.type";
+import { CountryModel } from "../../types/entities/country/CountryModel";
+import { UserModel } from "../../types/entities/user.type";
 
 type UserState = {
   currentUser: UserModel | null;

@@ -1,5 +1,5 @@
 import { CREDIT_VALUE } from "../../constants/values.constants";
-import { PresentativeContactType } from "../../types/contact/contact.type";
+import { PresentativeContactType } from "../../types/entities/contact/contact.type";
 
 export class ContactTransaction {
   contact;

@@ -12,21 +12,21 @@ import { categoryManagerSelectors } from "../../store/categoryManager/categoryMa
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CreateControlledContactApplyRequest } from "../../models/contactApplyRequest/create/createContactApplyRequest.request";
 import { contactApplyRequestApiService } from "../../services/http/api/contactRequest.api.service";
-import { AgentModel } from "../../types/agent.type";
+import { AgentModel } from "../../types/entities/agent.type";
 import { Select } from "../../components/ui/Select/Select";
 import { categoryManagerUtilService } from "../../utils/category-manager.utils";
 import { Input } from "../../components/form/Input/Input";
 import { PrimaryButton } from "../../components/ui/PrimaryButton/PrimaryButton";
 import PageLayout from "../../layout/PageLayout/PageLayout";
 import { useNavigate, useParams } from "react-router-dom";
-import { ContactModel } from "../../types/contact/contact.type";
 import { contactApiService } from "../../services/http/api/contact.api.service";
 import { ROUTES } from "../../constants/routes.constants";
 import { toast } from "react-toastify";
 import { MESSAGES } from "../../constants/messages.constants";
-import { UserModel } from "../../types/user.type";
+import { UserModel } from "../../types/entities/user.type";
+import { ContactModel } from "../../types/entities/contact/contact.type";
 
-const WeAreLookingForForm = () => {
+const WeAreLookingForPage = () => {
   const { categories, jobTitles, countries } = useSelector(
     categoryManagerSelectors.categoryManager()
   );
@@ -145,6 +145,7 @@ const WeAreLookingForForm = () => {
       imgUrl: currentUser.imgUrl?.url || "",
     };
   }, []);
+  console.log("categories", categories);
 
   if (!selectedContact) return <></>;
   return (
@@ -248,4 +249,4 @@ const WeAreLookingForForm = () => {
   );
 };
 
-export default WeAreLookingForForm;
+export default WeAreLookingForPage;

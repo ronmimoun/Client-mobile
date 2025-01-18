@@ -6,9 +6,9 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { InputController } from "../../components/form/controllers/InputController";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { PrimaryButton } from "../../components/ui/PrimaryButton/PrimaryButton";
-import { llmApiService } from "../../services/http/api/llm.api.service";
+import { openAiApiService } from "../../services/http/api/openAi.api.service";
 import { FaRegPaperPlane } from "react-icons/fa";
-import { OpenAIMessageModel } from "../../types/open-ai-chat/openAIChat.type";
+import { OpenAIMessageModel } from "../../types/entities/open-ai-chat/openAIChat.type";
 import { ChatMessage, MessageTypeEnum } from "./ChatMessage/ChatMessage";
 import { RenderByBooleanWrapper } from "../../components/utils/RenderByBooleanWrapper/RenderByBooleanWrapper";
 import { Loader } from "../../components/ui/Preloader/Loader";
@@ -53,7 +53,7 @@ const AIChat = () => {
     setMessages((prevState) => [...prevState, userMessage]);
 
     setIsLoading(true);
-    const response = await llmApiService.sendMessage(message);
+    const response = await openAiApiService.sendMessage(message);
     setIsLoading(false);
 
     if (!response.isSucceeded || !response.data?.content) return;

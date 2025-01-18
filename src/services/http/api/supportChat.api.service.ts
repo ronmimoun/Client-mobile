@@ -7,11 +7,11 @@ import {
 import { getBaseURl } from "../../../utils/api.utils";
 import { QuerySupportChatRequest } from "../../../models/supportChat/query/querySupportChat.request";
 import { QuerySupportChatResponse } from "../../../models/supportChat/query/querySupportChat.response";
-import { GetByIdSupportChatResponse } from "../../../models/supportChat/getById/getByIdSupportChat.response";
 import { CreateSupportChatRequest } from "../../../models/supportChat/create/CreateSupportChat.request";
 import { CreateSupportChatResponse } from "../../../models/supportChat/create/CreateSupportChat.response";
+import { GetByIdSupportChatResponse } from "../../../models/supportChat/getById/getSupportChatById.model";
 
-const supportChatHttpInstace = createManagedAxiosInstance(
+const supportChatHttpInstance = createManagedAxiosInstance(
   buildGeneralApiInstanceConfig(getBaseURl())
 );
 
@@ -25,7 +25,7 @@ const query = async (
   };
 
   const response =
-    await supportChatHttpInstace.managedRequest<QuerySupportChatResponse>(
+    await supportChatHttpInstance.managedRequest<QuerySupportChatResponse>(
       options
     );
   return response;
@@ -40,26 +40,26 @@ const getById = async (
   };
 
   const response =
-    await supportChatHttpInstace.managedRequest<GetByIdSupportChatResponse>(
+    await supportChatHttpInstance.managedRequest<GetByIdSupportChatResponse>(
       options
     );
   return response;
 };
 
-const create = async (
-  requestPayload: CreateSupportChatRequest
+const sendMessage = async (
+  request: CreateSupportChatRequest
 ): Promise<ApiResponse<CreateSupportChatResponse>> => {
   const options = {
     method: "post",
-    url: "/support_chat/create",
-    data: requestPayload,
+    url: "/support_chat/sendMessage",
+    data: request,
     loaderOptions: {
       ignore: true,
     },
   };
 
   const response =
-    await supportChatHttpInstace.managedRequest<CreateSupportChatResponse>(
+    await supportChatHttpInstance.managedRequest<CreateSupportChatResponse>(
       options
     );
   return response;
@@ -68,5 +68,5 @@ const create = async (
 export const supportChatApiService = {
   query,
   getById,
-  create,
+  sendMessage,
 };

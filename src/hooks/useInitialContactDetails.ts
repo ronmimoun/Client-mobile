@@ -1,12 +1,12 @@
 import { useSelector } from "react-redux";
 import { userSelectors } from "../store/user/user.selectors";
-import { UserModel } from "../types/user.type";
-import { ContactModel } from "../types/contact/contact.type";
+import { UserModel } from "../types/entities/user.type";
 import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { feedbackApiService } from "../services/http/api/feedback.api.service";
 import { ContactTransactionType } from "../enums/Contact/ContactTransactionType";
 import { contactApiService } from "../services/http/api/contact.api.service";
+import { ContactModel } from "../types/entities/contact/contact.type";
 
 export const useInitialContactDetails = () => {
   const currentUser = useSelector(userSelectors.currentUser()) as UserModel;

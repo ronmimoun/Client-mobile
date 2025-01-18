@@ -2,8 +2,8 @@ import { createSlice, PayloadAction, Reducer } from "@reduxjs/toolkit";
 import { UserState } from "./user-state";
 import { userUtilService } from "../../utils/user.utils";
 import { userThunkActionBuilder } from "./user.thunk-builder";
-import { CountryModel } from "../../types/country/CountryModel";
-import { UserModel } from "../../types/user.type";
+import { CountryModel } from "../../types/entities/country/CountryModel";
+import { UserModel } from "../../types/entities/user.type";
 
 const initialState: UserState = {
   currentUser: userUtilService.getLoggedinUser() || null,

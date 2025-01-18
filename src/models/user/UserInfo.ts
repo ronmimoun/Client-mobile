@@ -1,4 +1,4 @@
-import { UserModel } from "../../types/user.type";
+import { UserModel } from "../../types/entities/user.type";
 
 export class UserInfo {
   userId;

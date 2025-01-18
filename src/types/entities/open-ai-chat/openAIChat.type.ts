@@ -1,4 +1,4 @@
-import { MessageTypeEnum } from "../../pages/AIChat/ChatMessage/ChatMessage";
+import { MessageTypeEnum } from "../../../pages/AIChat/ChatMessage/ChatMessage";
 
 export type OpenAISendMessageResponse = {} & OpenAIMessageModel;
 

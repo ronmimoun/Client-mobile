@@ -6,7 +6,7 @@ import { FavoriteIcon } from "../../../components/ui/Icons";
 import Contact from "../../../components/feature/Contacts/Contact/Contact";
 import PageLayout from "../../../layout/PageLayout/PageLayout";
 import { ROUTES } from "../../../constants/routes.constants";
-import { UserModel } from "../../../types/user.type";
+import { UserModel } from "../../../types/entities/user.type";
 
 export const FavoriteContacts = () => {
   const currentUser = useSelector(userSelectors.currentUser()) as UserModel;

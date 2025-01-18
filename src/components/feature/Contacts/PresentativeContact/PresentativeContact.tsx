@@ -1,9 +1,9 @@
 import classes from "./PresentativeContact.module.scss";
 import ContactInfo from "../Contact/ContactInfo";
-import { PresentativeContactType } from "../../../../types/contact/contact.type";
 import { useContactSettings } from "../../../../hooks/useContactSettings";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { combineClassNames } from "../../../../utils/formatters.utils";
+import { PresentativeContactType } from "../../../../types/entities/contact/contact.type";
 
 type PresentativeContactProps = {
   contact: PresentativeContactType;

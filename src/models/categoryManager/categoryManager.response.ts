@@ -3,7 +3,7 @@ import {
   CompanyModel,
   JobTitleModel,
 } from "../../store/categoryManager/categoryManager-state";
-import { CountryModel } from "../../types/country/CountryModel";
+import { CountryModel } from "../../types/entities/country/CountryModel";
 
 export type getCategoryManagerResponse = object & CategoryManager;
 

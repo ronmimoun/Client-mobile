@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction, Reducer } from "@reduxjs/toolkit";
-import { PresentativeContactType } from "../../types/contact/contact.type";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../constants/popup.constants";
 import { cartThunkActionBuilder } from "./cart.thunk-builder";
 import { CartState } from "./cart-state";
+import { PresentativeContactType } from "../../types/entities/contact/contact.type";
 
 const initialState: CartState = {
   cart: [],

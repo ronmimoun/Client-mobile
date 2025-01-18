@@ -4,18 +4,16 @@ import { WalletCard } from "../../components/feature/WalletCard/WalletCard";
 
 export const Home = () => {
   return (
-    <>
-      <div className="space-pb--50">
-        <WalletCard />
-        <div className="backgrounds__white-top">
-          <ContactList
-            title={"New Contacts"}
-            filters={{ recentAdded: 1 }}
-            count={5}
-          />
-          <UserContacts title="My Orders" />
-        </div>
+    <div>
+      <WalletCard />
+      <div className="backgrounds__white-top">
+        <ContactList
+          title={"New Contacts"}
+          filters={{ recentAdded: 1 }}
+          count={5}
+        />
+        <UserContacts title="My Orders" />
       </div>
-    </>
+    </div>
   );
 };

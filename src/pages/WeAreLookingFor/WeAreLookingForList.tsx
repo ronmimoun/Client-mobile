@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { ContactModel } from "../../types/contact/contact.type";
 import { contactApiService } from "../../services/http/api/contact.api.service";
 import Contact from "../../components/feature/Contacts/Contact/Contact";
 import { ROUTES } from "../../constants/routes.constants";
 import PageLayout from "../../layout/PageLayout/PageLayout";
+import { ContactModel } from "../../types/entities/contact/contact.type";
 
 const WeAreLookingForList = () => {
   const [contactsNotInStock, setContactsNotInStock] = useState<ContactModel[]>(
@@ -11,14 +11,14 @@ const WeAreLookingForList = () => {
   );
 
   useEffect(() => {
-    const loadContacts = async () => {
-      const response = await contactApiService.getNotRequestedContacts();
+    const loadDemandedContacts = async () => {
+      const response = await contactApiService.getDemandedContacts();
       if (!response.isSucceeded || !response.data?.content) return;
 
       setContactsNotInStock(response.data.content);
     };
 
-    loadContacts();
+    loadDemandedContacts();
   }, []);
 
   return (

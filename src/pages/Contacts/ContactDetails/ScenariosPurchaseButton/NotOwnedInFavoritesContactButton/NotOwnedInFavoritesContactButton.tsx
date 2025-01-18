@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { LoadingButton } from "../../../../../components/ui/LoadingButton/LoadingButton";
-import { ContactModel } from "../../../../../types/contact/contact.type";
 import { useAppDispatch } from "../../../../../store";
 import { userActions } from "../../../../../store/user/user.actions";
+import { ContactModel } from "../../../../../types/entities/contact/contact.type";
 
 type NotOwnedInFavoritesContactButtonProps = {
   contact: ContactModel;

@@ -14,7 +14,7 @@ import { cartActions } from "../../store/cart/cart.actions";
 import { ROUTES } from "../../constants/routes.constants";
 import ContactInfo from "../../components/feature/Contacts/Contact/ContactInfo";
 import PageLayout from "../../layout/PageLayout/PageLayout";
-import { UserModel } from "../../types/user.type";
+import { UserModel } from "../../types/entities/user.type";
 
 export const Cart = () => {
   const contactCart = useSelector(cartSelectors.cart());

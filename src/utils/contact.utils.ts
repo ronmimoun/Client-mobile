@@ -1,7 +1,7 @@
 import {
   ContactModel,
   PresentativeContactType,
-} from "../types/contact/contact.type";
+} from "../types/entities/contact/contact.type";
 
 export const createPresentativeContact = (
   contact: ContactModel

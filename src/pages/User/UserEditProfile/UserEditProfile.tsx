@@ -1,15 +1,13 @@
 import { useSelector } from "react-redux";
 import { useForm, FormProvider } from "react-hook-form";
-import { useState, useEffect, useCallback } from "react";
+import { useCallback } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { userSelectors } from "../../../store/user/user.selectors";
-import { CountryModel } from "../../../types/country/CountryModel";
 import {
   EDIT_PROFILE_FORM_CONFIG,
   EDIT_PROFILE_FORM_SCHEMA,
   EditProfileForm,
 } from "../../../form/schemas/UserEditProfileSchema";
-import { countryApiService } from "../../../services/http/api/country.api.service";
 import PageLayout from "../../../layout/PageLayout/PageLayout";
 import { PAGES_TITLE } from "../../../constants/page-title.constants";
 import { useAppDispatch } from "../../../store";
@@ -19,11 +17,13 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../../constants/popup.constants";
 import { Select } from "../../../components/ui/Select/Select";
-import { UserModel } from "../../../types/user.type";
+import { UserModel } from "../../../types/entities/user.type";
+import { categoryManagerSelectors } from "../../../store/categoryManager/categoryManager.selectors";
 
 export const UserEditProfile = () => {
   const currentUser = useSelector(userSelectors.currentUser()) as UserModel;
-  const [countries, setCountries] = useState<CountryModel[]>([]);
+  const countries = useSelector(categoryManagerSelectors.countries);
+
   const formMethods = useForm<EditProfileForm>({
     defaultValues: {
       [EDIT_PROFILE_FORM_CONFIG.INPUTS.FULLNAME.KEY]:
@@ -40,16 +40,6 @@ export const UserEditProfile = () => {
     resolver: zodResolver(EDIT_PROFILE_FORM_SCHEMA),
   });
   const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    loadCountries();
-  }, []);
-
-  const loadCountries = async () => {
-    const countries = await countryApiService.query();
-    if (!countries.isSucceeded || !countries.data?.content) return;
-    setCountries(countries.data.content);
-  };
 
   const onSubmit = async (data: EditProfileForm) => {
     const requestPayload = {

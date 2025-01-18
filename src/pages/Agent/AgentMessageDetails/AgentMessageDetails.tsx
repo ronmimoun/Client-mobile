@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { categoryManagerSelectors } from "../../../store/categoryManager/categoryManager.selectors";
 import { userSelectors } from "../../../store/user/user.selectors";
-import { AgentMessageModel } from "../../../types/agent-message/agentMessage.type";
+import { AgentMessageModel } from "../../../types/entities/agent-message/agentMessage.type";
 import {
   AGENT_MESSAGE_DETAILS_FORM_CONFIG,
   AGENT_MESSAGE_DETAILS_FORM_SCHEMA,
@@ -23,7 +23,7 @@ import { useAppDispatch } from "../../../store";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { GenericResponse } from "../../../utils/api.utils";
 import { CreateAgentMessageResponse } from "../../../models/agentMessage/create/agentMessage.response";
-import { UserModel } from "../../../types/user.type";
+import { UserModel } from "../../../types/entities/user.type";
 
 const AgentMessageDetails = () => {
   const { categories, jobTitles } = useSelector(

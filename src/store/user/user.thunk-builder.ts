@@ -2,9 +2,9 @@ import { ActionReducerMapBuilder } from "@reduxjs/toolkit";
 import { UserState } from "./user-state";
 import { loginThunkBuilder, loginThunk } from "./user-thunks/loginThunkBuilder";
 import {
-  creditPurchase,
-  creditPurchaseThunkBuilder,
-} from "./user-thunks/creditPurchaseThunkBuilder";
+  createCreditPayment,
+  createCreditPaymentThunkBuilder,
+} from "./user-thunks/createCreditPaymentThunkBuilder";
 import {
   userUpdateThunkBuilder,
   userUpdateThunk,
@@ -25,25 +25,37 @@ import {
   singleContactPurchaseThunkBuilder,
   singleContactPurchase,
 } from "./user-thunks/singleContactPurchaseThunkBuilder";
+import {
+  addUserFavoriteContactThunkBuilder,
+  addUserFavoriteContactThunk,
+} from "./user-thunks/addUserFavoriteContactThunkBuilder";
+import {
+  removeUserFavoriteContactThunkBuilder,
+  removeUserFavoriteContactThunk,
+} from "./user-thunks/removeUserFavoriteContactThunkBuilder";
 
 export const userThunkActionBuilder = (
   builder: ActionReducerMapBuilder<UserState>
 ) => {
   loginThunkBuilder(builder);
   logoutThunkBuilder(builder);
-  creditPurchaseThunkBuilder(builder);
+  createCreditPaymentThunkBuilder(builder);
   userUpdateThunkBuilder(builder);
   addAgentMessageThunkBuilder(builder);
   registerThunkBuilder(builder);
   singleContactPurchaseThunkBuilder(builder);
+  addUserFavoriteContactThunkBuilder(builder);
+  removeUserFavoriteContactThunkBuilder(builder);
 };
 
 export const userThunkActions = {
   loginThunk,
   logoutThunk,
-  creditPurchase,
+  createCreditPayment,
   userUpdateThunk,
   addAgentMessageThunk,
   registerThunk,
   singleContactPurchase,
+  addUserFavoriteContactThunk,
+  removeUserFavoriteContactThunk,
 };

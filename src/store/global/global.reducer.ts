@@ -1,8 +1,9 @@
-import { createSlice, Reducer } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, Reducer } from "@reduxjs/toolkit";
 
 const initialState: GlobalState = {
   loaderCount: 0,
   error: null,
+  isConfigLoaded: false,
 };
 
 export const globalSlice = createSlice({
@@ -17,6 +18,9 @@ export const globalSlice = createSlice({
     },
     resetLoaderCount: (state) => {
       state.loaderCount = 0;
+    },
+    setIsConfigLoaded: (state, action: PayloadAction<boolean>) => {
+      state.isConfigLoaded = action.payload;
     },
     clearState: () => initialState,
   },

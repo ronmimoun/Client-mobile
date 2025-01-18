@@ -2,18 +2,18 @@ import { useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { AiOutlineStar } from "react-icons/ai";
 import { CategoriesEnum } from "../../../enums/Categories/CategoriesEnum";
-import { SelectedFilters } from "../../../types/contact/filters.type";
 import { userSelectors } from "../../../store/user/user.selectors";
 import { PAGES_TITLE } from "../../../constants/page-title.constants";
 import ContactList from "../../../components/feature/Contacts/ContactList/ContactList";
 import PageLayout from "../../../layout/PageLayout/PageLayout";
+import { SelectedFilters } from "../../../types/entities/contact/filters.type";
 
 type SearchType = {
   cat: string | CategoriesEnum;
   filters: SelectedFilters;
 };
 
-export const RecommandedContacts = () => {
+export const RecommendedContacts = () => {
   const currentUser = useSelector(userSelectors.currentUser());
   const [search, setSearch] = useState<SearchType | null>(null);
 

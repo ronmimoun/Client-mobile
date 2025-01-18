@@ -3,7 +3,7 @@ import { userSelectors } from "../../../store/user/user.selectors";
 import { timeUtilService } from "../../../utils/date.utils";
 import { PAGES_TITLE } from "../../../constants/page-title.constants";
 import PageLayout from "../../../layout/PageLayout/PageLayout";
-import { UserModel } from "../../../types/user.type";
+import { UserModel } from "../../../types/entities/user.type";
 
 export const UserCreditsHistory = () => {
   const currentUser = useSelector(userSelectors.currentUser()) as UserModel;

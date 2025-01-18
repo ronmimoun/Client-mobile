@@ -1,7 +1,7 @@
 import classes from "./ChatMessage.module.scss";
 import { Image } from "../../../components/ui/Image/Image";
 import { DUMMY_USER_URL } from "../../../constants/image.constants";
-import { OpenAIMessageModel } from "../../../types/open-ai-chat/openAIChat.type";
+import { OpenAIMessageModel } from "../../../types/entities/open-ai-chat/openAIChat.type";
 import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import { userSelectors } from "../../../store/user/user.selectors";
@@ -22,8 +22,6 @@ export const ChatMessage = ({ message }: ChatMessageProps) => {
     switch (message.role) {
       case MessageTypeEnum.ASSISTANT:
         return "Chat";
-      case MessageTypeEnum.USER:
-        return currentUser?.username;
       default:
         return currentUser?.username;
     }

@@ -5,7 +5,7 @@ import { userUtilService } from "../../../utils/user.utils";
 import { userApiService } from "../../../services/http/api/user.api.service";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../../constants/popup.constants";
-import { UserModel } from "../../../types/user.type";
+import { UserModel } from "../../../types/entities/user.type";
 
 export const userUpdateThunk = createAsyncThunk(
   "user/userUpdateThunk",

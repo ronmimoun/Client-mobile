@@ -1,9 +1,9 @@
 import classes from "./ContactDetailsAICompanyInfo.module.scss";
 import { useCallback, useEffect, useState } from "react";
-import { llmApiService } from "../../../../services/http/api/llm.api.service";
+import { openAiApiService } from "../../../../services/http/api/openAi.api.service";
 import { RenderByBooleanWrapper } from "../../../../components/utils/RenderByBooleanWrapper/RenderByBooleanWrapper";
 import { Loader } from "../../../../components/ui/Preloader/Loader";
-import { ContactModel } from "../../../../types/contact/contact.type";
+import { ContactModel } from "../../../../types/entities/contact/contact.type";
 
 const AI_PROMPT = "Explain more about that company: ";
 
@@ -25,7 +25,7 @@ export const ContactDetailsAICompanyInfo = ({
 
   const getCompanyInfo = useCallback(async (message: string) => {
     setIsLoading(true);
-    const response = await llmApiService.sendMessage(message);
+    const response = await openAiApiService.sendMessage(message);
     setIsLoading(false);
 
     if (!response.isSucceeded || !response.data?.content) return;

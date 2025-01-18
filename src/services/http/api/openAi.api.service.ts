@@ -1,5 +1,5 @@
 import { ApiResponse } from "../../../models/base/api-base";
-import { OpenAISendMessageResponse } from "../../../types/open-ai-chat/openAIChat.type";
+import { OpenAISendMessageResponse } from "../../../types/entities/open-ai-chat/openAIChat.type";
 import { getBaseURl } from "../../../utils/api.utils";
 import {
   buildGeneralApiInstanceConfig,
@@ -7,7 +7,7 @@ import {
 } from "../instances";
 import { AxiosRequestConfig } from "axios";
 
-const openAIChatHttpInstance = createManagedAxiosInstance(
+const openAIHttpInstance = createManagedAxiosInstance(
   buildGeneralApiInstanceConfig(getBaseURl())
 );
 
@@ -16,17 +16,15 @@ const sendMessage = async (
 ): Promise<ApiResponse<OpenAISendMessageResponse>> => {
   const options: AxiosRequestConfig = {
     method: "post",
-    url: "/llm/send",
+    url: "/openAi/sendPrompt",
     data: { message },
     loaderOptions: { ignore: true },
   };
   const response =
-    await openAIChatHttpInstance.managedRequest<OpenAISendMessageResponse>(
-      options
-    );
+    await openAIHttpInstance.managedRequest<OpenAISendMessageResponse>(options);
   return response;
 };
 
-export const llmApiService = {
+export const openAiApiService = {
   sendMessage,
 };

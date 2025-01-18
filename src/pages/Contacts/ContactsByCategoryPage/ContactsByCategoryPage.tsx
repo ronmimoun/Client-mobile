@@ -1,13 +1,13 @@
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { ExitIcon } from "../../../components/ui/Icons";
-import { SelectedFilters } from "../../../types/contact/filters.type";
 import { FORWARD_SLASH } from "../../../constants/keys.constants";
-import { FilterModeEnum } from "../../../types/modals/SelectModal";
+import { FilterModeEnum } from "../../../types/entities/modals/SelectModal";
 import SelectModal from "../../../components/modals/SelectModal";
 import { textUtilService } from "../../../utils/text.utils";
 import ContactList from "../../../components/feature/Contacts/ContactList/ContactList";
 import { ButtonIconBase } from "../../../components/ui/buttons/ButtonIconBase/ButtonIconBase";
+import { SelectedFilters } from "../../../types/entities/contact/filters.type";
 
 export const ContactsByCategoryPage = () => {
   const location = useLocation();

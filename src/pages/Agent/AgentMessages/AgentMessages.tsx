@@ -5,7 +5,7 @@ import { userSelectors } from "../../../store/user/user.selectors";
 import ContactInfo from "../../../components/feature/Contacts/Contact/ContactInfo";
 import { timeUtilService } from "../../../utils/date.utils";
 import { ROUTES } from "../../../constants/routes.constants";
-import { UserModel } from "../../../types/user.type";
+import { UserModel } from "../../../types/entities/user.type";
 
 export const AgentMessages = () => {
   const currentUser = useSelector(userSelectors.currentUser()) as UserModel;

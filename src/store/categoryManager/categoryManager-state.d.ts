@@ -1,4 +1,4 @@
-import { CountryModel } from "../../types/country/CountryModel";
+import { CountryModel } from "../../types/entities/country/CountryModel";
 
 type CategoryManagerState = {
   categories: Array<CategoryModel>;

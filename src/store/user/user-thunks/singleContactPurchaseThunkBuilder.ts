@@ -3,16 +3,15 @@ import {
   ActionReducerMapBuilder,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { ContactModel } from "../../../types/contact/contact.type";
 import { RootState } from "../../root.reducers";
 import { userUtilService } from "../../../utils/user.utils";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../../constants/popup.constants";
-import { paymentUtilService } from "../../../utils/payment.utils";
 import { UserState } from "../user-state";
 import { ApiResponse } from "../../../models/base/api-base";
 import { ContactPaymentResponse } from "../../../models/payment/contact/contactPayment.response";
-import { UserModel } from "../../../types/user.type";
+import { UserModel } from "../../../types/entities/user.type";
+import { ContactModel } from "../../../types/entities/contact/contact.type";
 
 export const singleContactPurchase = createAsyncThunk(
   "user/singleContactPurchase",
@@ -28,10 +27,10 @@ export const singleContactPurchase = createAsyncThunk(
       return;
     }
 
-    const paymentResponse =
-      await paymentUtilService.createContactPaymentRequest([requestPayload]);
+    // const paymentResponse =
+    //   await paymentUtilService.createContactPaymentRequest([requestPayload]);
 
-    return paymentResponse;
+    // return paymentResponse;
   }
 );
 

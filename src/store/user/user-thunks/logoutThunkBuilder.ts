@@ -3,7 +3,7 @@ import { UserState } from "../user-state";
 import { authApiService } from "../../../services/http/api/auth.api.service";
 import { ROUTES } from "../../../constants/routes.constants";
 import { userUtilService } from "../../../utils/user.utils";
-import { UserModel } from "../../../types/user.type";
+import { UserModel } from "../../../types/entities/user.type";
 
 export type logoutThunkResponse = {
   isSucceeded: boolean;

@@ -1,10 +1,10 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
-import { SelectedFilters } from "../../types/contact/filters.type";
 import { categoryManagerSelectors } from "../../store/categoryManager/categoryManager.selectors";
 import { elementUtilService } from "../../utils/element.utils";
 import { ArrowIcon, LineIcon, SortIcon } from "../ui/Icons";
+import { SelectedFilters } from "../../types/entities/contact/filters.type";
 
 type SelectModalProps = {
   setSelectedFilters: (type: FilterModeEnum, value: string) => void;

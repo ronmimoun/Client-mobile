@@ -1,9 +1,9 @@
 import classes from "./ContactDetailsInfo.module.scss";
 import { RenderByBooleanWrapper } from "../../../../components/utils/RenderByBooleanWrapper/RenderByBooleanWrapper";
-import { ContactModel } from "../../../../types/contact/contact.type";
 import { textUtilService } from "../../../../utils/text.utils";
 import { Mailto } from "../../../../components/ui/MailTo/MailTo";
 import { ContactNameRevealButton } from "./ContactNameRevealButton/ContactNameRevealButton";
+import { ContactModel } from "../../../../types/entities/contact/contact.type";
 
 type ContactDetailsInfoProps = {
   contact: ContactModel;

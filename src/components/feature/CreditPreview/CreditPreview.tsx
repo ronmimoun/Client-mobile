@@ -1,26 +1,35 @@
 import { useState } from "react";
-import { CreditModel } from "../../../types/credit/credit.type";
+import { Credit } from "../../../types/entities/credit/credit.type";
 import { useAppDispatch } from "../../../store";
 import { userActions } from "../../../store/user/user.actions";
-import { CreditPurchaseEnum } from "../../../enums/CreditTransaction/creditTransaction.enum";
+import { CreditTransactionTypeEnum } from "../../../enums/CreditTransaction/creditTransaction.enum";
 import { LoadingButton } from "../../ui/LoadingButton/LoadingButton";
+import { CreateCreditPaymentRequest } from "../../../types/api/payment/credit/createCreditPayment.type";
+import { useSelector } from "react-redux";
+import { userSelectors } from "../../../store/user/user.selectors";
 
-type CreditProps = {
-  credit: CreditModel;
+type CreditPreviewProps = {
+  credit: Credit;
 };
 
-export const Credit = ({ credit }: CreditProps) => {
+export const CreditPreview = ({ credit }: CreditPreviewProps) => {
+  const currentUserInfo = useSelector(userSelectors.currentUserInfo);
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
-  const onPurchaseCredit = async (credit: CreditModel) => {
+  const onPurchaseCredit = async (credit: Credit) => {
     setIsLoading(true);
-    await dispatch(
-      userActions.creditPurchase({
-        credit,
-        type: CreditPurchaseEnum.CreditPurchase,
-      })
-    );
+
+    const createCreditPaymentRequest: CreateCreditPaymentRequest = {
+      creditId: credit._id,
+      creditName: credit.name,
+      creditQuantity: credit.quantity,
+      packagePrice: credit.price,
+      type: CreditTransactionTypeEnum.CreditPurchase,
+      userInfo: currentUserInfo,
+    };
+    await dispatch(userActions.createCreditPayment(createCreditPaymentRequest));
     setIsLoading(false);
   };
 
@@ -51,5 +60,3 @@ export const Credit = ({ credit }: CreditProps) => {
     </div>
   );
 };
-
-export default Credit;

@@ -1,13 +1,12 @@
-export type RoomChatModel = {
+export type SupportChatModel = {
   _id: string;
-  chatId: string;
   fullname: string;
   chatImg: null;
   username: string;
-  messages: MessageModel[];
+  messages: SupportChatMessageModel[];
 };
 
-export type MessageModel = {
+export type SupportChatMessageModel = {
   senderId: string;
   senderName: string;
   receiverId: null;

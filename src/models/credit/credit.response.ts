@@ -1,4 +1,3 @@
-import { CreditModel } from "../../types/credit/credit.type";
+import { Credit } from "../../types/entities/credit/credit.type";
 
-
-export type CreditResponse = {} & CreditModel[]
+export type CreditResponse = {} & Credit[];

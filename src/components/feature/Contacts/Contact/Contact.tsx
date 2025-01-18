@@ -1,11 +1,11 @@
 import ContactInfo from "./ContactInfo";
 import { useAppDispatch } from "../../../../store";
-import { PresentativeContactType } from "../../../../types/contact/contact.type";
 import { ContactIcon } from "../../../ui/Icons";
 import { FaRegHeart } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 import { useContactSettings } from "../../../../hooks/useContactSettings";
 import { cartActions } from "../../../../store/cart/cart.actions";
+import { PresentativeContactType } from "../../../../types/entities/contact/contact.type";
 
 type ContactProps = {
   contact: PresentativeContactType;

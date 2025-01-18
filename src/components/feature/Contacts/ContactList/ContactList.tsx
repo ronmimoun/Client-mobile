@@ -3,10 +3,9 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { contactApiService } from "../../../../services/http/api/contact.api.service";
 import { ROUTES } from "../../../../constants/routes.constants";
-import { SelectedFilters } from "../../../../types/contact/filters.type";
-import { ContactModel } from "../../../../types/contact/contact.type";
 import Contact from "../Contact/Contact";
-import { useUpdateEffect } from "../../../../hooks/useEffectUpdate";
+import { SelectedFilters } from "../../../../types/entities/contact/filters.type";
+import { ContactModel } from "../../../../types/entities/contact/contact.type";
 
 type ContactListProps = {
   cat?: string;
@@ -32,10 +31,6 @@ export default function ContactList({
   useEffect(() => {
     if (!contacts.length) loadContacts();
   }, []);
-
-  useUpdateEffect(() => {
-    loadContacts();
-  }, [cat]);
 
   useEffect(() => {
     if (filters?.recentAdded) {

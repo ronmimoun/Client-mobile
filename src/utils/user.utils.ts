@@ -4,9 +4,9 @@ import {
 } from "../constants/storage.constatns";
 import { CREDIT_VALUE } from "../constants/values.constants";
 import { ContactTransactionType } from "../enums/Contact/ContactTransactionType";
-import { PresentativeContactType } from "../types/contact/contact.type";
-import { CountryModel } from "../types/country/CountryModel";
-import { UserModel } from "../types/user.type";
+import { PresentativeContactType } from "../types/entities/contact/contact.type";
+import { CountryModel } from "../types/entities/country/CountryModel";
+import { UserModel } from "../types/entities/user.type";
 
 const getMostRecentObject = (arr: any) => {
   if (arr.length === 0) {

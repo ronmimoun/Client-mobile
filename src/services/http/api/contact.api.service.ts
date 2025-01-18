@@ -8,7 +8,7 @@ import { ApiResponse } from "../../../models/base/api-base";
 import { ContactQueryResponse } from "../../../models/contact/Query/Query.response";
 import { ContactResponseBase } from "../../../models/contact/base/base.api";
 import { store } from "../../../utils/non-circular-injections.utils";
-import { getNotRequestedContactsResponse } from "../../../models/contact/getNotRequestedContacts/getNotRequestedContacts.response";
+import { getNotRequestedContactsResponse } from "../../../models/contact/getDemandedContacts/getDemandedContacts.response";
 import { sendContactDetailsEmailRequest } from "../../../models/contact/sendContactDetailsEmail/sendContactDetailsEmail.request";
 import { sendContactDetailsEmailResponse } from "../../../models/contact/sendContactDetailsEmail/sendContactDetailsEmail.response";
 import { ContactQueryRequest } from "../../../models/contact/Query/Query.request";
@@ -69,10 +69,10 @@ async function queryByCategory(request: string) {
   return response;
 }
 
-async function getUserContactSales(request: ContactQueryRequest) {
+async function getUserSoldContacts(request: ContactQueryRequest) {
   const options: AxiosRequestConfig = {
     method: "post",
-    url: `/contacts/user`,
+    url: `/contacts/getUserSoldContacts`,
     data: request,
   };
 
@@ -81,12 +81,12 @@ async function getUserContactSales(request: ContactQueryRequest) {
   return response;
 }
 
-async function getNotRequestedContacts(): Promise<
+async function getDemandedContacts(): Promise<
   ApiResponse<getNotRequestedContactsResponse>
 > {
   const options: AxiosRequestConfig = {
-    method: "post",
-    url: "/contacts/not-requested",
+    method: "get",
+    url: "/contacts/getDemandedContacts",
   };
 
   const response =
@@ -116,8 +116,8 @@ export const contactApiService = {
   query,
   getById,
   queryByCategory,
-  getUserContactSales,
+  getUserSoldContacts,
   controlledQuery,
-  getNotRequestedContacts,
+  getDemandedContacts,
   sendContactDetailsEmail,
 };
