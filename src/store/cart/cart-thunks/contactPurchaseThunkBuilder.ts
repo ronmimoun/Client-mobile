@@ -3,7 +3,6 @@ import { RootState } from "../../root.reducers";
 import { userUtilService } from "../../../utils/user.utils";
 import { toast } from "react-toastify";
 import { POPUP_MESSAGE } from "../../../constants/popup.constants";
-import { userActions } from "../../user/user.actions";
 import { buildResponse } from "../../../utils/api.utils";
 import { UserModel } from "../../../types/entities/user.type";
 import { CartState } from "../cart-state";
@@ -20,14 +19,14 @@ export const contactPurchase = createAsyncThunk(
       return buildResponse(false, null);
     }
 
-    const paymentResponse =
-      await paymentUtilService.createContactPaymentRequest(requestPayload);
+    // const paymentResponse =
+    //   await paymentUtilService.createContactPaymentRequest(requestPayload);
 
-    if (!paymentResponse?.isSucceeded || !paymentResponse?.data?.content)
-      return buildResponse(false, paymentResponse?.data?.content);
+    // if (!paymentResponse?.isSucceeded || !paymentResponse?.data?.content)
+    //   return buildResponse(false, paymentResponse?.data?.content);
 
-    thunkApi.dispatch(userActions.setCurrentUser(paymentResponse.data.content));
-    return buildResponse(true, paymentResponse.data.content);
+    // thunkApi.dispatch(userActions.setCurrentUser(paymentResponse.data.content));
+    // return buildResponse(true, paymentResponse.data.content);
   }
 );
 
@@ -38,8 +37,8 @@ export const contactPurchaseThunkBuilder = (
     .addCase(contactPurchase.rejected, () => {
       toast.error(POPUP_MESSAGE.CART.CANNOT_PURCHASE_CONTACTS);
     })
-    .addCase(contactPurchase.fulfilled, (state, action) => {
-      if (!action.payload.isSucceeded || !action.payload.data) return;
+    .addCase(contactPurchase.fulfilled, (state) => {
+      // if (!action.payload.isSucceeded || !action.payload.data) return;
 
       toast(POPUP_MESSAGE.CART.CONTACT_PURCAHSED);
       state.cart = [];

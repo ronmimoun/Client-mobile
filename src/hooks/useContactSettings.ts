@@ -72,9 +72,8 @@ export const useContactSettings = ({ contact }: useContactSettingsProps) => {
 
   const isUserOwnContact = (): boolean => {
     if (!currentUser || !currentUser.contactTransactions.length) return false;
-    console.log("currentUser", currentUser);
     const userContact = currentUser.contactTransactions.find(
-      (trans) => trans.contact._id === contact._id
+      (trans) => trans.contactId === contact._id
     );
     return !!userContact;
   };

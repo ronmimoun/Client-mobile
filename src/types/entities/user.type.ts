@@ -1,3 +1,4 @@
+import { ContactTransactionType } from "../../enums/Contact/ContactTransactionType";
 import { AgentMessageModel } from "./agent-message/agentMessage.type";
 import { PresentativeContactType } from "./contact/contact.type";
 import { CountryModel } from "./country/CountryModel";
@@ -29,7 +30,7 @@ export type UserModel = {
   favorites: Array<PresentativeContactType>;
   credits: number;
   creditTransactions: Array<any>;
-  contactTransactions: Array<any>;
+  contactTransactions: Array<ContactTransaction>;
   contactUploads: Array<any>;
   searchHistory: Array<any>;
   notifications: Array<any>;
@@ -56,4 +57,14 @@ export type UserInfo = {
   fullname?: string;
   userId?: string;
   imgUrl?: ImgUrl;
+};
+
+export type ContactTransaction = {
+  _id: string;
+  type: ContactTransactionType;
+  contactId: string;
+  priceInCredit: number;
+  createdAt: Date;
+  purchasedByUserId: string;
+  soldByUserId: string;
 };

@@ -5,7 +5,6 @@ import {
   buildGeneralApiInstanceConfig,
   createManagedAxiosInstance,
 } from "../http/instances";
-import { ContactPaymentRequest } from "../../models/payment/contact/contactPayment.request";
 import { ContactPaymentResponse } from "../../models/payment/contact/contactPayment.response";
 import { RefundContactRequest } from "../../models/payment/refund/refund.request";
 import { RefundContactResponse } from "../../models/payment/refund/refund.response";
@@ -13,6 +12,7 @@ import {
   CreateCreditPaymentRequest,
   CreateCreditPaymentResponse,
 } from "../../types/api/payment/credit/createCreditPayment.type";
+import { CreateContactPaymentRequest } from "../../types/api/payment/CreateContactPayment.type";
 
 const paymentHttpInstance = createManagedAxiosInstance(
   buildGeneralApiInstanceConfig(getBaseURl())
@@ -35,11 +35,11 @@ const createCreditPayment = async (
 };
 
 const createContactPayment = async (
-  request?: ContactPaymentRequest
+  request?: CreateContactPaymentRequest
 ): Promise<ApiResponse<ContactPaymentResponse>> => {
   const options: AxiosRequestConfig = {
     method: "post",
-    url: "/payment/contact/purchase",
+    url: "/payment/createContactPayment",
     data: request,
   };
 

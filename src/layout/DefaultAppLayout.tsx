@@ -1,3 +1,4 @@
+import classes from "./DefaultAppLayout.module.scss";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useLocation, useParams } from "react-router-dom";
 import { ROUTES } from "../constants/routes.constants";
@@ -52,7 +53,7 @@ const DefaultAppLayout = () => {
       navigate(ROUTES.HOME_SCREEN.FULL_ROUTE_NAME);
   }, []);
 
-  const ColorHeader = () => {
+  const ColorHeader = useMemo(() => {
     const isWithBackground = backgroundPages.includes(location.pathname);
     if (isWithBackground) {
       return (
@@ -71,11 +72,11 @@ const DefaultAppLayout = () => {
         </>
       );
     }
-  };
+  }, [location.pathname]);
 
   return (
     <>
-      <ColorHeader />
+      <div className={classes.container}>{ColorHeader}</div>
       <Footer />
     </>
   );

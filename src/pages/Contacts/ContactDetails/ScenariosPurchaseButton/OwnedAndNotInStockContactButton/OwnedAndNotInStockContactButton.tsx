@@ -22,7 +22,7 @@ export const OwnedAndNotInStockContactButton = ({
 
   const onRefund = async () => {
     const transaction = currentUser.contactTransactions.find(
-      (transaction) => transaction.contact._id === contact._id
+      (transaction) => transaction.contactId === contact._id
     );
     if (!transaction) {
       return toast(POPUP_MESSAGE.GENERAL.SOMETHING_WENT_WRONG);

@@ -51,7 +51,7 @@ export const useInitialContactDetails = () => {
       const isOwned = currentUser.contactTransactions.find(
         (trans) =>
           trans.type === ContactTransactionType.ContactPurchase &&
-          trans.contact._id === id
+          trans.contactId === id
       )
         ? true
         : false;

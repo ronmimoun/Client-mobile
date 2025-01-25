@@ -67,5 +67,5 @@ const makeErrorMessage = (error: AxiosError): string => {
   const errorCode: number | undefined = error.response?.status;
   const errorMessage = error.response?.data as ServerErrorMessage;
   if (!errorCode || !errorMessage) return "Unknown error message";
-  return `${errorCode || ""} ${errorMessage.status} - ${errorMessage.message}`;
+  return `${errorMessage.status} - ${errorMessage.message}`;
 };

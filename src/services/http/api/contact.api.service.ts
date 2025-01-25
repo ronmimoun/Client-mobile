@@ -12,6 +12,10 @@ import { getNotRequestedContactsResponse } from "../../../models/contact/getDema
 import { sendContactDetailsEmailRequest } from "../../../models/contact/sendContactDetailsEmail/sendContactDetailsEmail.request";
 import { sendContactDetailsEmailResponse } from "../../../models/contact/sendContactDetailsEmail/sendContactDetailsEmail.response";
 import { ContactQueryRequest } from "../../../models/contact/Query/Query.request";
+import {
+  GetContactsByIdArrayRequest,
+  GetContactsByIdArrayResponse,
+} from "../../../types/api/contact/GetContactByIdArray.type";
 
 const contactHttpInstance = createManagedAxiosInstance(
   buildGeneralApiInstanceConfig(getBaseURl())
@@ -112,6 +116,22 @@ async function sendContactDetailsEmail(
   return response;
 }
 
+async function getContactsByIdArray(
+  request: GetContactsByIdArrayRequest
+): Promise<ApiResponse<GetContactsByIdArrayResponse>> {
+  const options: AxiosRequestConfig = {
+    method: "post",
+    url: "/contacts/getContactsByIdArray",
+    data: request,
+  };
+
+  const response =
+    await contactHttpInstance.managedRequest<GetContactsByIdArrayResponse>(
+      options
+    );
+  return response;
+}
+
 export const contactApiService = {
   query,
   getById,
@@ -120,4 +140,5 @@ export const contactApiService = {
   controlledQuery,
   getDemandedContacts,
   sendContactDetailsEmail,
+  getContactsByIdArray,
 };

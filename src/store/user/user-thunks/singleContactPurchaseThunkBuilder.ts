@@ -12,25 +12,37 @@ import { ApiResponse } from "../../../models/base/api-base";
 import { ContactPaymentResponse } from "../../../models/payment/contact/contactPayment.response";
 import { UserModel } from "../../../types/entities/user.type";
 import { ContactModel } from "../../../types/entities/contact/contact.type";
+import { paymentApiService } from "../../../services/payment/payment.api.service";
+import { CreateContactPaymentRequest } from "../../../types/api/payment/CreateContactPayment.type";
+import { ContactTransactionType } from "../../../enums/Contact/ContactTransactionType";
 
 export const singleContactPurchase = createAsyncThunk(
   "user/singleContactPurchase",
   async (
-    requestPayload: ContactModel,
+    contact: ContactModel,
     thunkApi
   ): Promise<ApiResponse<ContactPaymentResponse> | undefined> => {
     const user = (thunkApi.getState() as RootState).user
       .currentUser as UserModel;
 
-    if (!userUtilService.calculateUserCredits([requestPayload], user)) {
+    if (!userUtilService.calculateUserCredits([contact], user)) {
       toast(POPUP_MESSAGE.CART.NOT_ENOUGH_CREDITS);
       return;
     }
 
-    // const paymentResponse =
-    //   await paymentUtilService.createContactPaymentRequest([requestPayload]);
+    const createContactPaymentRequest: CreateContactPaymentRequest = {
+      contactId: contact._id,
+      type: ContactTransactionType.ContactPurchase,
+      priceInCredit: contact.price,
+      purchasedByUserId: user._id,
+      soldByUserId: contact.agent?._id,
+    };
 
-    // return paymentResponse;
+    const paymentResponse = await paymentApiService.createContactPayment(
+      createContactPaymentRequest
+    );
+
+    return paymentResponse;
   }
 );
 

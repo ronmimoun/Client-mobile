@@ -33,5 +33,5 @@ export const ScenariosPurchaseButton = ({
     );
   } else if (isOwned && !contact.inStock) {
     return <OwnedAndNotInStockContactButton contact={contact} />;
-  } else return null;
+  } else return <></>;
 };
