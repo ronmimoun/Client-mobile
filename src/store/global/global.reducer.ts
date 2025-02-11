@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction, Reducer } from "@reduxjs/toolkit";
+import { globalThunkActionBuilder } from "./global.thunk-builder";
 
 const initialState: GlobalState = {
   loaderCount: 0,
@@ -24,6 +25,7 @@ export const globalSlice = createSlice({
     },
     clearState: () => initialState,
   },
+  extraReducers: globalThunkActionBuilder,
 });
 
 export const globalInitialState = initialState;

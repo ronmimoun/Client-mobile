@@ -13,7 +13,6 @@ import {
   failureApiResponse,
   successfulApiResponse,
 } from "../../utils/api-response-builders.utils";
-import { addInterceptors } from "./interceptors";
 import { TargetAPIHostEnum } from "../../types/request/RequestOptions";
 
 async function managedRequest<T extends ApiServerResponse<T>>(
@@ -55,7 +54,11 @@ export const createManagedAxiosInstance = (
 ): ManagedAxiosInstance => {
   const axiosInstance: AxiosInstance = axios.create(config);
 
-  if (useInterceptors) addInterceptors(axiosInstance);
+  if (useInterceptors) {
+    import("./interceptors").then(({ addInterceptors }) => {
+      addInterceptors(axiosInstance);
+    });
+  }
 
   const managedAxiosInstance = axiosInstance as ManagedAxiosInstance;
   managedAxiosInstance.managedRequest = managedRequest as ManagedAxiosInstance;

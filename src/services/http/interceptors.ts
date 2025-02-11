@@ -43,7 +43,6 @@ function onResponseRejected(error: AxiosError, instance: AxiosInstance) {
     handleLoader(config?.loaderOptions, false);
     return Promise.reject(error);
   }
-  if (shouldRetryRequest(config)) return retryRequest(error, instance);
 
   if ((error as AxiosError<unknown, any>).response) {
     console.log(
@@ -63,49 +62,3 @@ function onResponseRejected(error: AxiosError, instance: AxiosInstance) {
   handleError(error);
   return Promise.reject(error);
 }
-
-const shouldRetryRequest = (
-  config: InternalAxiosRequestConfig<any> | undefined
-): boolean => {
-  if (!config || !config.retryOptions?.retry) return false;
-
-  config.retryOptions.__retryCount = config.retryOptions.__retryCount || 0;
-
-  if (config.retryOptions.__retryCount >= config.retryOptions.retry)
-    return false;
-
-  return true;
-};
-
-const retryRequest = (
-  error: AxiosError,
-  instance: AxiosInstance
-): Promise<any> => {
-  const config = error.config;
-
-  if (!config || !config.retryOptions?.retry) {
-    handleLoader(config?.loaderOptions, false);
-    return Promise.reject(error);
-  }
-
-  if (!config.retryOptions.__retryCount) {
-    config.retryOptions.__retryCount = 0;
-  }
-
-  config.retryOptions.__retryCount += 1;
-
-  const delayRetryRequest = new Promise<void>((resolve) => {
-    setTimeout(() => {
-      console.log(
-        `Retry #${config.retryOptions?.__retryCount} the request`,
-        config.url
-      );
-      resolve();
-    }, config.retryOptions?.retryDelay || 100);
-  });
-
-  return delayRetryRequest.then(() => {
-    handleLoader(config.loaderOptions, false);
-    instance(config);
-  });
-};
