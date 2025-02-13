@@ -9,7 +9,7 @@ import { addJwtHeader, handleError, handleLoader } from "./handlers";
 export function addInterceptors(instance: AxiosInstance) {
   instance.interceptors.request.use(onRequestFulfilled, onRequestRejected);
   const onResponseRejectedRetry = async (error: AxiosError) => {
-    return await onResponseRejected(error, instance);
+    return await onResponseRejected(error);
   };
   instance.interceptors.response.use(
     onResponseFulfilled,
@@ -35,7 +35,7 @@ function onResponseFulfilled(response: AxiosResponse<any, any>) {
   return response;
 }
 
-function onResponseRejected(error: AxiosError, instance: AxiosInstance) {
+function onResponseRejected(error: AxiosError) {
   const config = error.config;
 
   if (!!axios.isCancel(error) === true) {
