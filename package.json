@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "vite --force",
+    "start:prod": "NODE_ENV=production vite --force",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
