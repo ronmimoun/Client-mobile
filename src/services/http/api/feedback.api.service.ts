@@ -10,21 +10,21 @@ import { QueryFeedbackResponse } from "../../../models/feedback/query/feedback.r
 import { CreateFeedbackResponse } from "../../../models/feedback/create/createFeedback.response";
 import { CreateFeedbackRequest } from "../../../models/feedback/create/createFeedback.request";
 
-const feedbackHttpInstace = createManagedAxiosInstance(
+const feedbackHttpInstance = createManagedAxiosInstance(
   buildGeneralApiInstanceConfig(getBaseURl())
 );
 
-const query = async (
+const getContactFeedback = async (
   requestPayload: QueryFeedbackRequest
 ): Promise<ApiResponse<QueryFeedbackResponse>> => {
   const options: AxiosRequestConfig = {
     method: "post",
-    url: "/feedback",
+    url: "/contactFeedback/getContactFeedback",
     data: requestPayload,
   };
 
   const response =
-    await feedbackHttpInstace.managedRequest<QueryFeedbackResponse>(options);
+    await feedbackHttpInstance.managedRequest<QueryFeedbackResponse>(options);
   return response;
 };
 
@@ -33,16 +33,16 @@ const create = async (
 ): Promise<ApiResponse<CreateFeedbackResponse>> => {
   const options = {
     method: "post",
-    url: "/feedback/create",
+    url: "/contactFeedback/create",
     data: requestPayload,
   };
 
   const response =
-    await feedbackHttpInstace.managedRequest<CreateFeedbackResponse>(options);
+    await feedbackHttpInstance.managedRequest<CreateFeedbackResponse>(options);
   return response;
 };
 
 export const feedbackApiService = {
-  query,
+  getContactFeedback,
   create,
 };

@@ -35,7 +35,7 @@ export const useInitialContactDetails = () => {
   const checkIsContactGotFeedback = async () => {
     if (!id) return;
 
-    const feedback = await feedbackApiService.query({
+    const feedback = await feedbackApiService.getContactFeedback({
       userId: currentUser._id,
       contactId: id,
     });

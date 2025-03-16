@@ -34,14 +34,14 @@ export const Feedback = () => {
   });
 
   useEffect(() => {
-    loadUserFeedback();
+    getContactFeedback();
   }, []);
 
-  const loadUserFeedback = async () => {
+  const getContactFeedback = async () => {
     setIsLoading(true);
     if (!contactId) return;
 
-    const response = await feedbackApiService.query({
+    const response = await feedbackApiService.getContactFeedback({
       contactId,
       userId: currentUser._id,
     });
