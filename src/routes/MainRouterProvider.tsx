@@ -1,4 +1,3 @@
-import DefaultAppLayout from "../layout/DefaultAppLayout";
 import {
   createBrowserRouter,
   createRoutesFromElements,
