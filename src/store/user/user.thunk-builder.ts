@@ -18,10 +18,6 @@ import {
   addAgentMessageThunk,
 } from "./user-thunks/addAgentMessageThunkBuilder";
 import {
-  registerThunkBuilder,
-  registerThunk,
-} from "./user-thunks/registerThunkBuilder";
-import {
   singleContactPurchaseThunkBuilder,
   singleContactPurchase,
 } from "./user-thunks/singleContactPurchaseThunkBuilder";
@@ -33,6 +29,10 @@ import {
   removeUserFavoriteContactThunkBuilder,
   removeUserFavoriteContactThunk,
 } from "./user-thunks/removeUserFavoriteContactThunkBuilder";
+import {
+  otpVerificationThunkBuilder,
+  otpVerificationThunk,
+} from "./user-thunks/otpVerificationThunkBuilder";
 
 export const userThunkActionBuilder = (
   builder: ActionReducerMapBuilder<UserState>
@@ -42,10 +42,10 @@ export const userThunkActionBuilder = (
   createCreditPaymentThunkBuilder(builder);
   userUpdateThunkBuilder(builder);
   addAgentMessageThunkBuilder(builder);
-  registerThunkBuilder(builder);
   singleContactPurchaseThunkBuilder(builder);
   addUserFavoriteContactThunkBuilder(builder);
   removeUserFavoriteContactThunkBuilder(builder);
+  otpVerificationThunkBuilder(builder);
 };
 
 export const userThunkActions = {
@@ -54,8 +54,8 @@ export const userThunkActions = {
   createCreditPayment,
   userUpdateThunk,
   addAgentMessageThunk,
-  registerThunk,
   singleContactPurchase,
   addUserFavoriteContactThunk,
   removeUserFavoriteContactThunk,
+  otpVerificationThunk,
 };

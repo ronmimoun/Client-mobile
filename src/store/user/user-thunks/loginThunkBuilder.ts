@@ -44,6 +44,7 @@ export const loginThunkBuilder = (
       loginThunk.fulfilled,
       (state, action: PayloadAction<UserAuthThunkResponse>) => {
         if (!action.payload.data) return;
+
         const payload = action.payload.data;
 
         state.currentUser = payload.user;

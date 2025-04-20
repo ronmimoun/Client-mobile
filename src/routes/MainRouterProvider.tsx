@@ -43,6 +43,7 @@ import WeAreLookingForPage from "../pages/WeAreLookingFor/WeAreLookingForPage";
 import AIChat from "../pages/AIChat/AIChat";
 import { RevealedContacts } from "../pages/RevealedContacts/RevealedContacts";
 import { RecommendedContacts } from "../pages/Contacts/RecommandedContacts/RecommandedContacts";
+import { ProtectedRouter } from "./ProtectedRouter";
 
 const RoutesWrapper = () => {
   const currentUser = useSelector(userSelectors.currentUser());
@@ -70,7 +71,7 @@ const mainRouter = createBrowserRouter(
         element={<Register />}
       />
 
-      <Route path={ROUTES.BASE} element={<DefaultAppLayout />}>
+      <Route path={ROUTES.BASE} element={<ProtectedRouter />}>
         <Route path={ROUTES.HOME_SCREEN.FULL_ROUTE_NAME} element={<Home />} />
         <Route
           path={ROUTES.CONTACTS_PAGE.CONTACT_CATEGORY_FULL_ROUTE_NAME}

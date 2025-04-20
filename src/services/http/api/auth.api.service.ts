@@ -9,8 +9,10 @@ import {
 import { getBaseURl } from "../../../utils/api.utils";
 import { RegisterResponse } from "../../../models/auth/register/register.response";
 import { RegisterRequest } from "../../../models/auth/register/register.request";
+import { VerifyOTPResponse } from "../../../types/api/auth/OTPVerification.type";
+import { VerifyOTPRequest } from "../../../types/api/auth/OTPVerification.type";
 
-const authHttpInstace = createManagedAxiosInstance(
+const authHttpInstance = createManagedAxiosInstance(
   buildGeneralApiInstanceConfig(getBaseURl())
 );
 
@@ -23,7 +25,9 @@ const login = async (
     data: request,
   };
 
-  const response = await authHttpInstace.managedRequest<LoginResponse>(options);
+  const response = await authHttpInstance.managedRequest<LoginResponse>(
+    options
+  );
   return response;
 };
 const logout = async (): Promise<ApiResponse<null>> => {
@@ -32,7 +36,7 @@ const logout = async (): Promise<ApiResponse<null>> => {
     url: "/auth/logout",
   };
 
-  const response = await authHttpInstace.managedRequest<null>(options);
+  const response = await authHttpInstance.managedRequest<null>(options);
   return response;
 };
 
@@ -45,7 +49,22 @@ const register = async (
     data: requestPayload,
   };
 
-  const response = await authHttpInstace.managedRequest<RegisterResponse>(
+  const response = await authHttpInstance.managedRequest<RegisterResponse>(
+    options
+  );
+  return response;
+};
+
+const verifyOTP = async (
+  requestPayload: VerifyOTPRequest
+): Promise<ApiResponse<VerifyOTPResponse>> => {
+  const options: AxiosRequestConfig = {
+    method: "post",
+    url: "/auth/verify-otp",
+    data: requestPayload,
+  };
+
+  const response = await authHttpInstance.managedRequest<VerifyOTPResponse>(
     options
   );
   return response;
@@ -55,4 +74,5 @@ export const authApiService = {
   login,
   logout,
   register,
+  verifyOTP,
 };

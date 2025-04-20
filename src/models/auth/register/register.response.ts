@@ -1,1 +1,3 @@
-export type RegisterResponse = object;
+export type RegisterResponse = {
+  userId: string;
+};
